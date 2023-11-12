@@ -32,14 +32,21 @@
     <div class="reveal">
       <div class="laser-pointer"></div>
       <div class="slides" id="slide_container">
-        <section data-state="Title_Page">
-          <h1>Yang Zhang</h1>
-          <p>PhD student in the Department of Chemistry at the University of Zurich</p>
-          <p>Research interest: Computational Chemistry, Machine Learning</p>
-          <p>Advisor: Prof. Amedeo Caflisch</p>
-          <p>Office: </p>
-          <p>Email: </p>
+        <section data-state="Title_Page" style="text-align: left; padding-left: 5%;">
+          <p style="padding-top: 10%; padding-bottom:20px; font-size:30px; font-family: 'monospace';">Hi, This is</p>
+          <h1 style="padding-bottom:50px; font-size: 75px; color: #155674; -webkit-text-stroke: 2px #F0A500;
+          font-family: 'monospace'; font-weight:bolder; ">Yang Zhang</h1>
+          <p style="padding-bottom:30px;">PhD student, Department of Biochemistry </p>
+          <p style="padding-bottom: 30px">University of Zurich</p>
+          <p style="padding-bottom:30px;">Supervisor: Prof. Amedeo Caflisch, Dr. Andreas Vitalis</p>
+          <p style="padding-bottom:30px;">Research interest: Computational Chemistry, Molecular dynamics simulation, Machine Learning</p>
+
+
+<!--          <p style="padding-bottom: 30px"> <a href="mailto:credo_zhang@163.com" >My Email address </a> </p>-->
+
+          <img id="welcome_bgimage" src="Images/BG_IMAGE" style="position: absolute; top:10px; right:-300px; opacity:0.25; transform: rotate(-30deg); filter: blur(2px); height: 700px; width: auto; z-index: -1;">
         </section>
+
         <section data-state="slide_">
           <p class="slide-title">This is a Template Slide for Demonstration</p>
           <div class="slide_content_style1">
@@ -58,33 +65,33 @@
           </div>
           <p class="reference_style">This is a template reference.</p>
         </section>
-        <section data-state="slide_">
-          <p class="slide-title">This is a Template Slide for Demonstration</p>
-          <div class="slide_content_style1">
-            <p>This is a Template Main Context1</p>
-            <p>This is a Template Main Context2</p>
-            <p>This is a Template Main Context3</p>
-          </div>
-          <p class="reference_style">This is a template reference.</p>
-        </section>
-        <section data-state="slide_">
-          <p class="slide-title">This is a Template Slide for Demonstration</p>
-          <div class="slide_content_style1">
-            <p>This is a Template Main Context1</p>
-            <p>This is a Template Main Context2</p>
-            <p>This is a Template Main Context3</p>
-          </div>
-          <p class="reference_style">This is a template reference.</p>
-        </section>
-        <section data-state="slide_">
-          <p class="slide-title">This is a Template Slide for Demonstration</p>
-          <div class="slide_content_style1">
-            <p>This is a Template Main Context1</p>
-            <p>This is a Template Main Context2</p>
-            <p>This is a Template Main Context3</p>
-          </div>
-          <p class="reference_style">This is a template reference.</p>
-        </section>
+<!--        <section data-state="slide_">-->
+<!--          <p class="slide-title">This is a Template Slide for Demonstration</p>-->
+<!--          <div class="slide_content_style1">-->
+<!--            <p>This is a Template Main Context1</p>-->
+<!--            <p>This is a Template Main Context2</p>-->
+<!--            <p>This is a Template Main Context3</p>-->
+<!--          </div>-->
+<!--          <p class="reference_style">This is a template reference.</p>-->
+<!--        </section>-->
+<!--        <section data-state="slide_">-->
+<!--          <p class="slide-title">This is a Template Slide for Demonstration</p>-->
+<!--          <div class="slide_content_style1">-->
+<!--            <p>This is a Template Main Context1</p>-->
+<!--            <p>This is a Template Main Context2</p>-->
+<!--            <p>This is a Template Main Context3</p>-->
+<!--          </div>-->
+<!--          <p class="reference_style">This is a template reference.</p>-->
+<!--        </section>-->
+<!--        <section data-state="slide_">-->
+<!--          <p class="slide-title">This is a Template Slide for Demonstration</p>-->
+<!--          <div class="slide_content_style1">-->
+<!--            <p>This is a Template Main Context1</p>-->
+<!--            <p>This is a Template Main Context2</p>-->
+<!--            <p>This is a Template Main Context3</p>-->
+<!--          </div>-->
+<!--          <p class="reference_style">This is a template reference.</p>-->
+<!--        </section>-->
 
 
       </div>
@@ -131,6 +138,7 @@
       };
 
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
+
       kjera.set_repo(repo_url);
 
       const PRELOAD_FIGURES = true;
@@ -142,6 +150,7 @@
       }
       const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
       const IMG_BG = "Images/BG_IMAGE.png";
+      await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
 
       (async ()=>{
         // Set university logo

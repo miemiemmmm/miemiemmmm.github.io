@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #E8F0F2 !important;
+    /*background: #E8F0F2 !important;*/
 }
 
 .uzh_logo{
@@ -25,6 +25,12 @@
     width: 62.5%;
     height: 100%;
 }
+
+
+
+
+
+
 
 /*
  * The reveal.js styles

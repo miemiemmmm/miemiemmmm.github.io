@@ -30,10 +30,11 @@
 <body>
   <div class="main_container reveal">
     <div class="reveal">
+      <div class="laser-pointer"></div>
       <div class="slides" id="slide_container">
         <section data-state="Title_Page">
           <h1>Yang Zhang</h1>
-          <p>PhD student in the Department of Chemistry at the University of Chicago</p>
+          <p>PhD student in the Department of Chemistry at the University of Zurich</p>
           <p>Research interest: Computational Chemistry, Machine Learning</p>
           <p>Advisor: Prof. Amedeo Caflisch</p>
           <p>Office: </p>
@@ -124,26 +125,75 @@
       // import { kjera } from "./modules.js" // local, for development only
       // import * as kjera from "./modules.js" // local, for development only
 
-      var repo_url = 'https://github.com/miemiemmmm/miemiemmmm.github.io/'
+      const github_auth = {
+        // Authorization: "Bearer GITHUB_FINE_GRAINED_TOKEN",
+        Accept: "application/vnd.github+object",
+      };
+
+      var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
+      kjera.set_repo(repo_url);
+
+      const PRELOAD_FIGURES = true;
+      const FIGURES = {};
+      if (PRELOAD_FIGURES == true){
+        console.log("Before get all images <<<<<<<<<<<<<");
+        kjera.getAllImages(FIGURES);
+        console.log("After get all images <<<<<<<<<<<<<");
+      }
+      const IMG_LOGO = "Images/UZH_LOGO_WEB.tif"; 
+      const IMG_BG = "Images/BG_IMAGE.png";
+
       (async ()=>{
         // Set university logo
-        var univ_logo = await kjera.getImageb64(repo_url + "Images/UZH_LOGO_WEB.jpg");
+        var univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
         var imgdiv = document.createElement('img');
         imgdiv.classList.add('uzh_logo');
         imgdiv.src = univ_logo;
         document.body.appendChild(imgdiv);
-
-        // var b64_chapter_break = await kjera.getImageb64(repo_url + img_chapter_break);
+        var b64_chapter_break = await kjera.getImageb64(repo_url + IMG_BG);
       })();
 
 
-        Reveal.initialize({
-            // Set the theme to white
-            theme: 'white',
-            // Set the transition style to slide
-            transition: 'convex',
-            backgroundTransition: "zoom"
-        });
+      Reveal.initialize({
+        // Set the theme to white
+        theme: 'white',
+        // Set the transition style to slide
+        transition: 'convex',
+        backgroundTransition: "zoom"
+      });
+
+      // Move the laser pointer with the mouse
+      // Laser pointer function for the slides
+      const laserPointer = document.querySelector('.laser-pointer');
+      var usingLaser = false;
+      document.addEventListener('keydown', (event) => {
+        if (event.key == "1" && !usingLaser){
+          laserPointer.style.opacity = 1;
+          usingLaser=true
+          $('body').css('cursor', 'none');
+          laserPointer.style.left = -100+"px";
+          laserPointer.style.top = -100+"px";
+        } else {
+          laserPointer.style.opacity = 0;
+          usingLaser=false
+          $('body').css('cursor', 'default');
+        }
+      });
+      document.addEventListener('mousemove', (event) => {
+        if (usingLaser) {
+          laserPointer.style.left = event.clientX - laserPointer.clientWidth / 2 + 'px';
+          laserPointer.style.top = event.clientY - laserPointer.clientHeight / 2 + 'px';
+        }
+      });
+
+      $(".gallery-item").hover(
+        function() {
+          $(this).css({"z-index": 999})
+        },
+        function() {
+          $(this).css({"z-index": 0})
+        }
+      );
     </script>
 
 

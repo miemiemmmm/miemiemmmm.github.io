@@ -8,6 +8,18 @@
     <title>Yang Zhang's Homepage</title>
     <link rel="stylesheet" href="index.css">
 
+    <script type="module">
+        // Load the three.js for 3d object visualization
+        import * as THREE from  "https://cdn.jsdelivr.net/npm/three@0.127.0/build/three.module.js"
+        import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/controls/OrbitControls.js"
+        import { PLYLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/PLYLoader.js"
+        window.THREE = THREE;
+        window.OrbitControls = OrbitControls;
+        window.PLYLoader = PLYLoader
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css" integrity="sha512-V5fKCVKOFy36w8zJmLzPH5R6zU6KvuHOvxfMRczx2ZeqTjKRGSBO9yiZjCKEJS3n6EmENwrH/xvSwXqxje+VVA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js" integrity="sha512-QYXU3Cojl94ZRiZRjUZpyg1odj9mKTON9MsTMzGNx/L3JqvMA3BQNraZwsZ83UeisO+QMVfFa83SyuYYJzR9hw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" integrity="sha512-jGR1T3dQerLCSm/IGEGbndPwzszJBlKQ5Br9vuB0Pw2iyxOy+7AK+lJcCC8eaXyz/9du+bkCy4HXxByhxkHf+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
     <script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
@@ -16,26 +28,122 @@
 
 </head>
 <body>
-    <div class="main_container">
-        <div class="main_page">
-            <h1>Yang Zhang</h1>
-            <p>The home page is understand construction.......</p>
-            <div>
-                Showcase of the projects
+  <div class="main_container reveal">
+    <div class="reveal">
+      <div class="slides" id="slide_container">
+        <section data-state="Title_Page">
+          <h1>Yang Zhang</h1>
+          <p>PhD student in the Department of Chemistry at the University of Chicago</p>
+          <p>Research interest: Computational Chemistry, Machine Learning</p>
+          <p>Advisor: Prof. Amedeo Caflisch</p>
+          <p>Office: </p>
+          <p>Email: </p>
+        </section>
+        <section data-state="slide_">
+          <p class="slide-title">This is a Template Slide for Demonstration</p>
+          <div class="slide_content_style1">
+            <p>This is a Template Main Context1</p>
+            <p>This is a Template Main Context2</p>
+            <p>This is a Template Main Context3</p>
+          </div>
+          <p class="reference_style">This is a template reference.</p>
+        </section>
+        <section data-state="slide_">
+          <p class="slide-title">This is a Template Slide for Demonstration</p>
+          <div class="slide_content_style1">
+            <p>This is a Template Main Context1</p>
+            <p>This is a Template Main Context2</p>
+            <p>This is a Template Main Context3</p>
+          </div>
+          <p class="reference_style">This is a template reference.</p>
+        </section>
+        <section data-state="slide_">
+          <p class="slide-title">This is a Template Slide for Demonstration</p>
+          <div class="slide_content_style1">
+            <p>This is a Template Main Context1</p>
+            <p>This is a Template Main Context2</p>
+            <p>This is a Template Main Context3</p>
+          </div>
+          <p class="reference_style">This is a template reference.</p>
+        </section>
+        <section data-state="slide_">
+          <p class="slide-title">This is a Template Slide for Demonstration</p>
+          <div class="slide_content_style1">
+            <p>This is a Template Main Context1</p>
+            <p>This is a Template Main Context2</p>
+            <p>This is a Template Main Context3</p>
+          </div>
+          <p class="reference_style">This is a template reference.</p>
+        </section>
+        <section data-state="slide_">
+          <p class="slide-title">This is a Template Slide for Demonstration</p>
+          <div class="slide_content_style1">
+            <p>This is a Template Main Context1</p>
+            <p>This is a Template Main Context2</p>
+            <p>This is a Template Main Context3</p>
+          </div>
+          <p class="reference_style">This is a template reference.</p>
+        </section>
 
 
-            </div>
-            <p> </p>
+      </div>
+<!--      Template page-->
+<!--      <section data-state="slide_">-->
+<!--        <p class="slide-title">This is a Template Slide for Demonstration</p>-->
+<!--        <div class="slide_content_style1">-->
+<!--          <p>This is a Template Main Context1</p>-->
+<!--          <p>This is a Template Main Context2</p>-->
+<!--          <p>This is a Template Main Context3</p>-->
+<!--        </div>-->
+<!--        <p class="reference_style">This is a template reference.</p>-->
+<!--      </section>-->
+<!--      Template page-->
 
-        </div>
 
     </div>
 
 
+
+
+  </div>
+
+<!--        <div class="main_page">-->
+<!--            <h1>Yang Zhang</h1>-->
+<!--            <p>The home page is understand construction.......</p>-->
+<!--            <div>-->
+<!--                Showcase of the projects-->
+<!--            </div>-->
+<!--        </div>-->
+
+
     <script type="module">
-        import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js';
-        // kjera.test_function();
-        // kjera.simple_print("introducing new modules")
+      import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js';
+      // kjera.test_function();
+      // kjera.simple_print("introducing new modules")
+      // import { kjera } from "https://cdn.jsdelivr.net/gh/miemiemmmm/HPPT@main/modules.js
+      // import { kjera } from "./modules.js" // local, for development only
+      // import * as kjera from "./modules.js" // local, for development only
+
+      var repo_url = 'https://github.com/miemiemmmm/miemiemmmm.github.io/'
+      (async ()=>{
+        // Set university logo
+        var univ_logo = await kjera.getImageb64(repo_url + "Images/UZH_LOGO_WEB.jpg");
+        var imgdiv = document.createElement('img');
+        imgdiv.classList.add('uzh_logo');
+        imgdiv.src = univ_logo;
+        document.body.appendChild(imgdiv);
+
+        // var b64_chapter_break = await kjera.getImageb64(repo_url + img_chapter_break);
+      })();
+
+
+        Reveal.initialize({
+            // Set the theme to white
+            theme: 'white',
+            // Set the transition style to slide
+            transition: 'convex',
+            backgroundTransition: "zoom"
+        });
     </script>
 
 

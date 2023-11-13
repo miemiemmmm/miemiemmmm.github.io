@@ -45,6 +45,10 @@ section {
     height: 100%;
 }
 
+.href_style{
+    color: black !important;
+}
+
 .slide-title {
     position: absolute !important;
     top: 12.5% !important;

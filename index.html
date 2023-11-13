@@ -167,8 +167,8 @@
 
 
     <script type="module">
-      // import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js';
-      import * as kjera from "./modules.js"
+      import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
+      // import * as kjera from "./modules.js"
       // kjera.test_function();
       // kjera.simple_print("introducing new modules")
       // import { kjera } from "https://cdn.jsdelivr.net/gh/miemiemmmm/HPPT@main/modules.js
@@ -183,7 +183,7 @@
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
 
       kjera.set_repo(repo_url);
-      kjera.set_token("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")
+      kjera.set_token("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")
 
       const PRELOAD_FIGURES = true;
       const FIGURES = {};
@@ -217,13 +217,12 @@
 
       Reveal.addEventListener('slidechanged', function(event) {
 				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_KeyChildModule') {
-          const image1 = "MD_workflow_1.png"
+          const image1 = "Overall_workflow.jpg"
           if (Object.keys(FIGURES).includes(image1)){
             kjera.setupImage("img_childmodules", FIGURES[image1]);
           } else {
             kjera.setupImage("img_childmodules", repo_url + "Images/"+image1);
           }
-					// setupImage("img_childmodules", "Overall_workflow.jpg");
 				}
 			})
 

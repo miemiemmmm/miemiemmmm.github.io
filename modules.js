@@ -132,6 +132,10 @@ async function listAndFetch(theurl){
   var ret_data = {}
   let response = await fetch(theurl, {headers: github_auth.get_auth()});
   let data = await response.json();
+  if (!Array.isArray(data)) {
+    console.log("Warning: Failed to retrieve the contents as an array: ", data)
+    return ret_data
+  }
   for (let file of data) {
     if (file.type == "dir"){
       var newpath = theurl+file.name+"/"
@@ -149,15 +153,15 @@ async function listAndFetch(theurl){
 async function getAllImages(FIGURES) {
   // Get all images from the repo asynchonously
   // Lazy mode: Automatically get all images from the repo; Save to the global object: FIGURES
-  try {
+  // try {
     // Get the contents of the repo
     let tempimgs = await listAndFetch(github_auth.repo)
     for (let key in tempimgs){
       FIGURES[key] = tempimgs[key]
     }
-  } catch (error) {
-    console.error("An error occurred:", error);
-  }
+  // } catch (error) {
+  //   console.error("An error occurred:", error);
+  // }
 }
 
 function getFileName(element){

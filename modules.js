@@ -20,7 +20,7 @@ class github_api {
   constructor() {
     this.repo = "";
     this.accept = "application/vnd.github+object";
-    this.authorization = "Bearer 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"; // "Bearer "+token
+    this.authorization = "";
   }
   get_auth() {
     var ret_headers = {

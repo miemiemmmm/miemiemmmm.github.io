@@ -41,7 +41,7 @@
             interaction pattern using 3D-based geometric deep learning.
           </p>
 
-          <p style="padding-bottom: 20px; font-size:15px;">For further exploring the prototyping of the framework, hit the right key or the button on the lower right corner</p>
+          <p style="padding-bottom: 20px; font-size:15px;">For further exploring the prototyping of the framework, hit the <span style="font-weight: bold">right key</span> or the <span style="font-weight: bold">arrow button</span> on the lower-right corner</p>
 <!--          <h2 style="padding-bottom: 20px; font-size:15px; line-height: 1.5; "><span style="font-weight: bold">Research interest:</span> </h2>-->
 
           <h2 style="padding-bottom: 10px; font-size: 15px; font-weight: bold; ">Education</h2>
@@ -63,7 +63,7 @@
 
           <p style="padding-bottom: 20px; padding-top: 20px"><a href="https://github.com/miemiemmmm" target="_blank">Github</a> |
             <a href="https://www.linkedin.com/in/yang-zhang-947953172" target="_blank">LinkedIn</a> |
-            <a href="https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/Yang_CV_2023.pdf" target="_blank">CV</a> |
+            <a href="https://raw.githubusercontent.com/miemiemmmm/miemiemmmm.github.io/main/Yang_CV_2023.pdf" target="_blank">CV</a> |
             <a href="mailto:y.zhang@bioc.uzh.ch" target="_blank">E-Mail</a>
           </p>
 
@@ -157,280 +157,258 @@
 <!--          </div>-->
 <!--          <p class="reference_style">This is a template reference.</p>-->
 <!--        </section>-->
-
-
       </div>
-<!--      Template page-->
-<!--      <section data-state="slide_">-->
-<!--        <p class="slide-title">This is a Template Slide for Demonstration</p>-->
-<!--        <div class="slide_content_style1">-->
-<!--          <p>This is a Template Main Context1</p>-->
-<!--          <p>This is a Template Main Context2</p>-->
-<!--          <p>This is a Template Main Context3</p>-->
-<!--        </div>-->
-<!--        <p class="reference_style">This is a template reference.</p>-->
-<!--      </section>-->
-<!--      Template page-->
-
-
     </div>
-
-
-
-
   </div>
 
-<!--        <div class="main_page">-->
-<!--            <h1>Yang Zhang</h1>-->
-<!--            <p>The home page is understand construction.......</p>-->
-<!--            <div>-->
-<!--                Showcase of the projects-->
-<!--            </div>-->
-<!--        </div>-->
+  <!--
+  TODO list before pushing:
+  1. Change the kjera importing path to the CDN
+  2. Change the public token if needed.
+   -->
 
-    <!--
-    TODO list before pushing:
-    1. Change the kjera importing path to the CDN
-    2. Change the public token if needed.
-     -->
+  <script type="module">
+    function gettok(){
+      let starting = atob("Z2l0aHViX3BhdF8=");
+      let second = atob("MTFBTlc2UVZZMDlsQWlycWNNV0RCdw==");
+      let third = atob("X29md25EQ25mYUxBTnhYbkVIaDhPU0NkRA==");
+      let fourth = atob("QWZCV21sNWhKQzliVlNBVHVpWTYzV1RPWUcyTElwMTloNFk=");
+      return starting + second + third + fourth;
+    }
+    var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
+    import { Octokit, App } from "https://esm.sh/octokit";
+    import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
+    // import * as kjera from "./modules.js"    // For local development
+    // kjera.test_function();                   // For local development
+    kjera.set_repo(repo_url);
+    kjera.set_token(gettok());
 
-    <script type="module">
-      import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
-      // import * as kjera from "./modules.js"    // For local development
-      // kjera.test_function();                   // For local development
+    kjera.setupImage("Images/UZH_LOGO_WEB.png")
 
-      var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
-      kjera.set_repo(repo_url);
-      // kjera.set_token(atob("Z2l0aHViX3BhdF8xMUFOVzZRVlkwelpUREJZQ2d1TFluX3l0UmdYZEhjU3Z4ZVA5Vjg3UWZZV0JLa3VYNEpscGRBeThrQVNsVG1pNmtMS1JZQ0tTU3B5MHdrakhj"))
+    const PRELOAD_FIGURES = true;
+    const FIGURES = {};
+    if (PRELOAD_FIGURES == true){
+      // NOTE: Add await to synchronously load the images; remove the await to load asynchronously
+      kjera.getAllImages(FIGURES);
+    }
+    const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
+    const IMG_BG = "Images/BG_IMAGE.png";
+    await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
+    var univ_logo;
 
-      kjera.setupImage("Images/UZH_LOGO_WEB.png")
+    (async ()=>{
+      // Set university logo
+      univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
+      var imgdiv = document.createElement('img');
+      imgdiv.classList.add('uzh_logo');
+      imgdiv.src = univ_logo;
+      document.body.appendChild(imgdiv);
+      var b64_chapter_break = await kjera.getImageb64(repo_url + IMG_BG);
+    })();
 
-      const PRELOAD_FIGURES = true;
-      const FIGURES = {};
-      if (PRELOAD_FIGURES == true){
-        // NOTE: Add await to synchronously load the images; remove the await to load asynchronously
-        kjera.getAllImages(FIGURES);
+
+    Reveal.initialize({
+      // Set the theme to white
+      theme: 'white',
+      // Set the transition style to slide
+      transition: 'convex',
+      backgroundTransition: "zoom"
+    });
+
+    Reveal.addEventListener('slidechanged', function(event) {
+      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_KeyChildModule') {
+        const image1 = "Overall_workflow.jpg"
+        if (Object.keys(FIGURES).includes(image1)){
+          kjera.setupImage("img_childmodules", FIGURES[image1]);
+        } else {
+          kjera.setupImage("img_childmodules", repo_url + "Images/"+image1);
+        }
       }
-      const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
-      const IMG_BG = "Images/BG_IMAGE.png";
-      await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
-      var univ_logo;
+    })
 
-      (async ()=>{
-        // Set university logo
-        univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
-        var imgdiv = document.createElement('img');
-        imgdiv.classList.add('uzh_logo');
+    Reveal.addEventListener('slidechanged', function(event) {
+      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture') {
+        const image1 = "MD_workflow_2.png"
+        const image2 = "Trajectory_decomposition.jpg"
+        const image3 = "tmp05dodkbp_final_feat.png"
+        if (Object.keys(FIGURES).includes(image1)){
+          kjera.setupImage("PackageArchetecture_fig1", FIGURES[image1]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig1", repo_url + "Images/"+image1);
+        }
+        if (Object.keys(FIGURES).includes(image2)){
+          kjera.setupImage("PackageArchetecture_fig2", FIGURES[image2]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig2", repo_url + "Images/"+image2);
+        }
+        if (Object.keys(FIGURES).includes(image3)){
+          kjera.setupImage("PackageArchetecture_fig3", FIGURES[image3]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig3", repo_url + "Images/"+image3);
+        }
+
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+        $(".gallery-item").hover(
+          function() {
+            if ($(this).hasClass('PackageArchetecture')){
+              $(this).removeClass('image-gray');
+            }
+          },
+          function() {
+            if ($(this).hasClass('PackageArchetecture')) {
+              $(this).addClass('image-gray');
+            }
+          }
+        );
+      }
+    })
+
+    Reveal.addEventListener('slidechanged', function(event) {
+      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture2') {
+        let image1 = "Image_pocket.png"
+        let image2 = "MBlock_retrieval.jpg"
+        let image3 = "Example_3D_CNN.png"
+        if (Object.keys(FIGURES).includes(image1)){
+          kjera.setupImage("PackageArchetecture_fig4", FIGURES[image1]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig4", repo_url + "Images/"+image1);
+        }
+        if (Object.keys(FIGURES).includes(image2)){
+          kjera.setupImage("PackageArchetecture_fig5", FIGURES[image2]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig5", repo_url + "Images/"+image2);
+        }
+        if (Object.keys(FIGURES).includes(image3)){
+          kjera.setupImage("PackageArchetecture_fig6", FIGURES[image3]);
+        } else {
+          kjera.setupImage("PackageArchetecture_fig6", repo_url + "Images/"+image3);
+        }
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+        $(".gallery-item").hover(
+          function() {
+            if ($(this).hasClass('PackageArchetecture')){
+              $(this).removeClass('image-gray');
+            }
+          },
+          function() {
+            if ($(this).hasClass('PackageArchetecture')) {
+              $(this).addClass('image-gray');
+            }
+          }
+        );
+      }
+    })
+
+
+
+    function update_page_number(event, pageNumberID){
+      if (event){
+        var pageNumber = event.indexh + 1;
+      } else {
+        var pageNumber = 1;
+      }
+      var totalPages = Reveal.getTotalSlides();
+      var pageString = pageNumber + '/' + totalPages;
+      var pageNumberElement = document.querySelector( pageNumberID );
+      if ( pageNumberElement ) {
+        pageNumberElement.innerHTML = pageString;
+        pageNumberElement.style.zIndex = 0
+      } else {
+        var pagediv = document.createElement( 'div' );
+        pagediv.classList.add( 'page-number' );
+        pagediv.innerHTML = pageString;
+        pagediv.style.zIndex = 0
+        document.body.appendChild( pagediv );
+      }
+    }
+
+    kjera.update_page_number(false, '.page-number' );
+
+    Reveal.addEventListener( 'slidechanged', function( event ) {
+      // Add the UZH logo
+      var uzhLogoElement = document.querySelector( '.uzh_logo' );
+      if ( uzhLogoElement ) {
+        uzhLogoElement.src = univ_logo;
+      } else {
+        var imgdiv = document.createElement( 'img' );
+        imgdiv.classList.add( 'uzh_logo' );
         imgdiv.src = univ_logo;
-        document.body.appendChild(imgdiv);
-        var b64_chapter_break = await kjera.getImageb64(repo_url + IMG_BG);
-      })();
-
-
-      Reveal.initialize({
-        // Set the theme to white
-        theme: 'white',
-        // Set the transition style to slide
-        transition: 'convex',
-        backgroundTransition: "zoom"
-      });
-
-      Reveal.addEventListener('slidechanged', function(event) {
-				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_KeyChildModule') {
-          const image1 = "Overall_workflow.jpg"
-          if (Object.keys(FIGURES).includes(image1)){
-            kjera.setupImage("img_childmodules", FIGURES[image1]);
-          } else {
-            kjera.setupImage("img_childmodules", repo_url + "Images/"+image1);
-          }
-				}
-			})
-
-      Reveal.addEventListener('slidechanged', function(event) {
-				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture') {
-          const image1 = "MD_workflow_2.png"
-          const image2 = "Trajectory_decomposition.jpg"
-          const image3 = "tmp05dodkbp_final_feat.png"
-          if (Object.keys(FIGURES).includes(image1)){
-            kjera.setupImage("PackageArchetecture_fig1", FIGURES[image1]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig1", repo_url + "Images/"+image1);
-          }
-          if (Object.keys(FIGURES).includes(image2)){
-            kjera.setupImage("PackageArchetecture_fig2", FIGURES[image2]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig2", repo_url + "Images/"+image2);
-          }
-          if (Object.keys(FIGURES).includes(image3)){
-            kjera.setupImage("PackageArchetecture_fig3", FIGURES[image3]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig3", repo_url + "Images/"+image3);
-          }
-
-					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-					const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-					$(".gallery-item").hover(
-						function() {
-							if ($(this).hasClass('PackageArchetecture')){
-								$(this).removeClass('image-gray');
-							}
-						},
-						function() {
-							if ($(this).hasClass('PackageArchetecture')) {
-								$(this).addClass('image-gray');
-							}
-						}
-					);
-				}
-			})
-
-      Reveal.addEventListener('slidechanged', function(event) {
-				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture2') {
-          let image1 = "Image_pocket.png"
-          let image2 = "MBlock_retrieval.jpg"
-          let image3 = "Example_3D_CNN.png"
-          if (Object.keys(FIGURES).includes(image1)){
-            kjera.setupImage("PackageArchetecture_fig4", FIGURES[image1]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig4", repo_url + "Images/"+image1);
-          }
-          if (Object.keys(FIGURES).includes(image2)){
-            kjera.setupImage("PackageArchetecture_fig5", FIGURES[image2]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig5", repo_url + "Images/"+image2);
-          }
-          if (Object.keys(FIGURES).includes(image3)){
-            kjera.setupImage("PackageArchetecture_fig6", FIGURES[image3]);
-          } else {
-            kjera.setupImage("PackageArchetecture_fig6", repo_url + "Images/"+image3);
-          }
-					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-					$(".gallery-item").hover(
-						function() {
-							if ($(this).hasClass('PackageArchetecture')){
-								$(this).removeClass('image-gray');
-							}
-						},
-						function() {
-							if ($(this).hasClass('PackageArchetecture')) {
-								$(this).addClass('image-gray');
-							}
-						}
-					);
-				}
-			})
-
-
-
-      function update_page_number(event, pageNumberID){
-        if (event){
-          var pageNumber = event.indexh + 1;
-        } else {
-          var pageNumber = 1;
-        }
-        var totalPages = Reveal.getTotalSlides();
-        var pageString = pageNumber + '/' + totalPages;
-        var pageNumberElement = document.querySelector( pageNumberID );
-        if ( pageNumberElement ) {
-          pageNumberElement.innerHTML = pageString;
-          pageNumberElement.style.zIndex = 0
-        } else {
-          var pagediv = document.createElement( 'div' );
-          pagediv.classList.add( 'page-number' );
-          pagediv.innerHTML = pageString;
-          pagediv.style.zIndex = 0
-          document.body.appendChild( pagediv );
-        }
+        document.body.appendChild( imgdiv );
       }
 
-      kjera.update_page_number(false, '.page-number' );
-
-      Reveal.addEventListener( 'slidechanged', function( event ) {
-				// Add the UZH logo
-				var uzhLogoElement = document.querySelector( '.uzh_logo' );
-				if ( uzhLogoElement ) {
-					uzhLogoElement.src = univ_logo;
-				} else {
-					var imgdiv = document.createElement( 'img' );
-					imgdiv.classList.add( 'uzh_logo' );
-					imgdiv.src = univ_logo;
-					document.body.appendChild( imgdiv );
-				}
-
-        kjera.update_page_number(event, '.page-number' );
+      kjera.update_page_number(event, '.page-number' );
 
 
-				// var symbol_fig = document.querySelector( '.symbol_fig' );
-				// if ( symbol_fig ) {
-				// 	symbol_fig.src = box2_trans
-				// } else {
-				// 	var symboldiv = document.createElement( 'img' );
-				// 	symboldiv.classList.add( 'symbol_fig' );
-				// 	symboldiv.src = box2_trans;
-				// 	symboldiv.style.zIndex = 0
-				// 	document.body.appendChild(symboldiv)
-				// }
+      // var symbol_fig = document.querySelector( '.symbol_fig' );
+      // if ( symbol_fig ) {
+      // 	symbol_fig.src = box2_trans
+      // } else {
+      // 	var symboldiv = document.createElement( 'img' );
+      // 	symboldiv.classList.add( 'symbol_fig' );
+      // 	symboldiv.src = box2_trans;
+      // 	symboldiv.style.zIndex = 0
+      // 	document.body.appendChild(symboldiv)
+      // }
 
-				const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-				// console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
-				// $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+      const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      // console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
+      // $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
 
-				// setup break slide
-				// var found_chapterbreak = event.currentSlide.querySelector( '.chapter_break_container' );
-				// var found_chapterbreakimg = event.currentSlide.querySelector( '.chapter_break_container img' );
-				// if ( found_chapterbreak && found_chapterbreakimg.src.slice(0,4) !== "data") {
-				// 	// found_chapterbreakimg.src = Snap_bfl1_bh3;
-				// 	found_chapterbreakimg.src = tmpo_gbx3oc_final_conf
-				// 	found_chapterbreakimg.style.zIndex = -10;
-				// 	found_chapterbreakimg.style.width = '75%';
-				// 	found_chapterbreakimg.style.position = "absolute"
-				// 	found_chapterbreakimg.style.transform = 'rotate(-30deg)';
-				// 	found_chapterbreakimg.style.filter = "blur(5px)";
-				// 	found_chapterbreakimg.style.bottom = 0;
-				// 	found_chapterbreakimg.style.right = "-30%";
-				// 	found_chapterbreakimg.style.opacity = 0.2;
-				// 	var chapterbreak = document.querySelector( '.chapter_break')
-				// 	chapterbreak.style.zIndex = 999
-				// }
-			});
+      // setup break slide
+      // var found_chapterbreak = event.currentSlide.querySelector( '.chapter_break_container' );
+      // var found_chapterbreakimg = event.currentSlide.querySelector( '.chapter_break_container img' );
+      // if ( found_chapterbreak && found_chapterbreakimg.src.slice(0,4) !== "data") {
+      // 	// found_chapterbreakimg.src = Snap_bfl1_bh3;
+      // 	found_chapterbreakimg.src = tmpo_gbx3oc_final_conf
+      // 	found_chapterbreakimg.style.zIndex = -10;
+      // 	found_chapterbreakimg.style.width = '75%';
+      // 	found_chapterbreakimg.style.position = "absolute"
+      // 	found_chapterbreakimg.style.transform = 'rotate(-30deg)';
+      // 	found_chapterbreakimg.style.filter = "blur(5px)";
+      // 	found_chapterbreakimg.style.bottom = 0;
+      // 	found_chapterbreakimg.style.right = "-30%";
+      // 	found_chapterbreakimg.style.opacity = 0.2;
+      // 	var chapterbreak = document.querySelector( '.chapter_break')
+      // 	chapterbreak.style.zIndex = 999
+      // }
+    });
 
-      // Move the laser pointer with the mouse
-      // Laser pointer function for the slides
-      const laserPointer = document.querySelector('.laser-pointer');
-      var usingLaser = false;
-      document.addEventListener('keydown', (event) => {
-        if (event.key == "1" && !usingLaser){
-          laserPointer.style.opacity = 1;
-          usingLaser=true
-          $('body').css('cursor', 'none');
-          laserPointer.style.left = -100+"px";
-          laserPointer.style.top = -100+"px";
-        } else {
-          laserPointer.style.opacity = 0;
-          usingLaser=false
-          $('body').css('cursor', 'default');
-        }
-      });
-      document.addEventListener('mousemove', (event) => {
-        if (usingLaser) {
-          laserPointer.style.left = event.clientX - laserPointer.clientWidth / 2 + 'px';
-          laserPointer.style.top = event.clientY - laserPointer.clientHeight / 2 + 'px';
-        }
-      });
+    // Move the laser pointer with the mouse
+    // Laser pointer function for the slides
+    const laserPointer = document.querySelector('.laser-pointer');
+    var usingLaser = false;
+    document.addEventListener('keydown', (event) => {
+      if (event.key == "1" && !usingLaser){
+        laserPointer.style.opacity = 1;
+        usingLaser=true
+        $('body').css('cursor', 'none');
+        laserPointer.style.left = -100+"px";
+        laserPointer.style.top = -100+"px";
+      } else {
+        laserPointer.style.opacity = 0;
+        usingLaser=false
+        $('body').css('cursor', 'default');
+      }
+    });
+    document.addEventListener('mousemove', (event) => {
+      if (usingLaser) {
+        laserPointer.style.left = event.clientX - laserPointer.clientWidth / 2 + 'px';
+        laserPointer.style.top = event.clientY - laserPointer.clientHeight / 2 + 'px';
+      }
+    });
 
-      $(".gallery-item").hover(
-        function() {
-          $(this).css({"z-index": 999})
-        },
-        function() {
-          $(this).css({"z-index": 0})
-        }
-      );
-    </script>
-
-
+    $(".gallery-item").hover(
+      function() {
+        $(this).css({"z-index": 999})
+      },
+      function() {
+        $(this).css({"z-index": 0})
+      }
+    );
+  </script>
 </body>
 </html>

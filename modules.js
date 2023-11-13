@@ -128,25 +128,33 @@ async function setupImage(image, figContent){
   }
 }
 
+async function listAndFetch(theurl){
+  var ret_data = {}
+  let response = await fetch(theurl, {headers: github_auth.get_auth()});
+  let data = await response.json();
+  for (let file of data) {
+    if (file.type == "dir"){
+      var newpath = theurl+file.name+"/"
+      let tempdata = await listAndFetch(newpath)
+      for (let key in tempdata){
+        ret_data[key] = tempdata[key]
+      }
+    } else if (file.type == "file" && IMAGEFORMATS.includes(file.name.split('.').pop().toLowerCase())){
+      ret_data[file.name] = await getImageb64(theurl + file.name);
+    }
+  }
+  return ret_data
+}
+
 async function getAllImages(FIGURES) {
   // Get all images from the repo asynchonously
   // Lazy mode: Automatically get all images from the repo; Save to the global object: FIGURES
   try {
     // Get the contents of the repo
-    let response = await fetch(github_auth.repo, {headers: github_auth.get_auth()});
-    let data = await response.json();
-    // For each file in the repo
-    // 1. Check image;
-    // 2. Fetch the image and store the image in base64 format
-    for (let file of data) {
-      let extension = file.name.split('.').pop().toLowerCase()
-      if (IMAGEFORMATS.includes(extension)) {
-        var filename = file.name.split('?')[0].split("/")[file.name.split('?')[0].split("/").length-1];
-        FIGURES[filename] = await getImageb64(github_auth.repo + filename);
-      }
+    let tempimgs = await listAndFetch(github_auth.repo)
+    for (let key in tempimgs){
+      FIGURES[key] = tempimgs[key]
     }
-    console.log("After the getting all images: ", FIGURES);
-
   } catch (error) {
     console.error("An error occurred:", error);
   }

@@ -183,13 +183,13 @@
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
 
       kjera.set_repo(repo_url);
+      kjera.set_token("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")
 
       const PRELOAD_FIGURES = true;
       const FIGURES = {};
       if (PRELOAD_FIGURES == true){
-        console.log("Before get all images <<<<<<<<<<<<<");
         kjera.getAllImages(FIGURES);
-        console.log("After get all images <<<<<<<<<<<<<");
+        // console.log(FIGURES); // TODO: remove the await and console.log
       }
       const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
       const IMG_BG = "Images/BG_IMAGE.png";
@@ -216,19 +216,42 @@
       });
 
       Reveal.addEventListener('slidechanged', function(event) {
+				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_KeyChildModule') {
+          const image1 = "MD_workflow_1.png"
+          if (Object.keys(FIGURES).includes(image1)){
+            kjera.setupImage("img_childmodules", FIGURES[image1]);
+          } else {
+            kjera.setupImage("img_childmodules", repo_url + "Images/"+image1);
+          }
+					// setupImage("img_childmodules", "Overall_workflow.jpg");
+				}
+			})
+
+      Reveal.addEventListener('slidechanged', function(event) {
 				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture') {
-          const image1 = "Images/MD_workflow_2.png"
+          const image1 = "MD_workflow_2.png"
+          const image2 = "Trajectory_decomposition.jpg"
+          const image3 = "tmp05dodkbp_final_feat.png"
           console.log("---->", FIGURES)
-          // if (Object.keys(FIGURES).includes("MD_workflow_2.png")){
-          //   kjera.setupImage("PackageArchetecture_fig1", FIGURES["MD_workflow_2.png"]);
-          // }
-					kjera.setupImage("PackageArchetecture_fig1", MD_workflow_2);
-					kjera.setupImage("PackageArchetecture_fig2", Trajectory_decomposition);
-					kjera.setupImage("PackageArchetecture_fig3", tmp05dodkbp_final_feat);
+          if (Object.keys(FIGURES).includes(image1)){
+            kjera.setupImage("PackageArchetecture_fig1", FIGURES[image1]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig1", repo_url + "Images/"+image1);
+          }
+          if (Object.keys(FIGURES).includes(image2)){
+            kjera.setupImage("PackageArchetecture_fig2", FIGURES[image2]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig2", repo_url + "Images/"+image2);
+          }
+          if (Object.keys(FIGURES).includes(image3)){
+            kjera.setupImage("PackageArchetecture_fig3", FIGURES[image3]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig3", repo_url + "Images/"+image3);
+          }
+
 					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 					const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-
 					$(".gallery-item").hover(
 						function() {
 							if ($(this).hasClass('PackageArchetecture')){
@@ -248,9 +271,24 @@
 
       Reveal.addEventListener('slidechanged', function(event) {
 				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture2') {
-					setupImage("PackageArchetecture_fig4", Image_pocket);
-					setupImage("PackageArchetecture_fig5", MBlock_retrieval);
-					setupImage("PackageArchetecture_fig6", Example_3D_CNN);
+          let image1 = "Image_pocket.png"
+          let image2 = "MBlock_retrieval.jpg"
+          let image3 = "Example_3D_CNN.png"
+          if (Object.keys(FIGURES).includes(image1)){
+            kjera.setupImage("PackageArchetecture_fig4", FIGURES[image1]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig4", repo_url + "Images/"+image1);
+          }
+          if (Object.keys(FIGURES).includes(image2)){
+            kjera.setupImage("PackageArchetecture_fig5", FIGURES[image2]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig5", repo_url + "Images/"+image2);
+          }
+          if (Object.keys(FIGURES).includes(image3)){
+            kjera.setupImage("PackageArchetecture_fig6", FIGURES[image3]);
+          } else {
+            kjera.setupImage("PackageArchetecture_fig6", repo_url + "Images/"+image3);
+          }
 					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
 					$(".gallery-item").hover(

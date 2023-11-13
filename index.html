@@ -32,9 +32,10 @@
       <div class="laser-pointer"></div>
       <div class="slides" id="slide_container">
         <section data-state="Title_Page" style="text-align: justify; padding-left: 5%;">
+          <img src="Images/biochemgroup_zuerich_2022_yang.jpeg" style="position: absolute; left:75%; top:7%" id="personal_photo">
           <h1 style="padding-top:7.0%; padding-bottom:25px; font-size: 35px; color: #0C356A; -webkit-text-stroke: 0.75px #FF90C2;
           font-family: 'monospace'; font-weight:bolder; ">Yang Zhang (张杨)</h1>
-          <p style="padding-bottom: 20px; font-size:15px; line-height: 1.25; ">
+          <p style="padding-bottom: 20px; font-size:15px; line-height: 1.25; width: 65%">
             I am a Ph.D. student in <a href="http://www.biochem-caflisch.uzh.ch/" style="color: black; font-family: cursive; " target="_blank">Amedeo Caflisch's group</a> at the University of Zurich.
             I played a key role in the development of a web-based drug discovery platform (ACGui) to facilitate high-throughput virtual screening and molecular dynamics (MD) simulations.
             Currently, I am working on a framework for the systematic extraction of the dynamic features from MD trajectories.
@@ -187,7 +188,9 @@
     }
     const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
     const IMG_BG = "Images/BG_IMAGE.png";
+    const IMG_PORT = "Images/biochemgroup_zuerich_2022_yang.jpeg"
     await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
+    await kjera.setupImage("personal_photo", repo_url + IMG_PORT);
     var univ_logo;
 
     (async ()=>{

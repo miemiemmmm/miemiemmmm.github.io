@@ -24,7 +24,6 @@
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
     <script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML"></script>
-<!--    <script src="https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js"></script>-->
 
 </head>
 <body>
@@ -33,16 +32,40 @@
       <div class="laser-pointer"></div>
       <div class="slides" id="slide_container">
         <section data-state="Title_Page" style="text-align: left; padding-left: 5%;">
-          <p style="padding-top: 10%; padding-bottom:20px; font-size:30px; font-family: 'monospace';">Hi, This is</p>
-          <h1 style="padding-bottom:50px; font-size: 75px; color: #155674; -webkit-text-stroke: 2px #F0A500;
-          font-family: 'monospace'; font-weight:bolder; ">Yang Zhang</h1>
-          <p style="padding-bottom:30px;">PhD student, Department of Biochemistry </p>
-          <p style="padding-bottom: 30px">University of Zurich</p>
-          <p style="padding-bottom:30px;">Supervisor: Prof. Amedeo Caflisch, Dr. Andreas Vitalis</p>
-          <p style="padding-bottom:30px;">Research interest: Computational Chemistry, Molecular dynamics simulation, Machine Learning</p>
+<!--          <p style="padding-top: 10%; padding-bottom:20px; font-size:30px; font-family: 'monospace';">Hi, This is</p>-->
+          <h1 style="padding-top:10%; padding-bottom:25px; font-size: 35px; color: #155674; -webkit-text-stroke: 1.5px #F0A500;
+          font-family: 'monospace'; font-weight:bolder; ">Yang Zhang (张杨)</h1>
+          <p style="padding-bottom: 20px; font-size:15px; line-height: 1.25">I am a PhD student in the Department of Biochemistry at the University of Zurich.
+            I am proactively exploring the interface between Molecular dynamics simulation, Machine Learning to accelerate drug discovery. I am
+            particularly interested in the development of a computational framework to facilitate the machine learning understanding of the molecular
+            interaction pattern using 3D-based geometric deep learning.
+          </p>
 
+          <p style="padding-bottom: 20px; font-size:15px;">For further exploring the prototyping of the framework, hit the right key or the button on the lower right corner</p>
+<!--          <h2 style="padding-bottom: 20px; font-size:15px; line-height: 1.5; "><span style="font-weight: bold">Research interest:</span> </h2>-->
 
-<!--          <p style="padding-bottom: 30px"> <a href="mailto:credo_zhang@163.com" >My Email address </a> </p>-->
+          <h2 style="padding-bottom: 10px; font-size: 15px; font-weight: bold; ">Education</h2>
+          <p style="padding-bottom: 7.5px; font-size: 15px; line-height: 1.25;">
+            <span style="font-weight: bold;">03/2020 - Now: University of Zurich and ETH Zurich</span>, Zurich, Switzerland<br>
+            Ph.D. in Biomolecular Structure and Mechanism<br>
+            Supervisor: Prof. Amedeo Caflisch, Dr. Andreas Vitalis
+          </p>
+          <p style="padding-bottom: 7.5px; font-size: 15px; line-height: 1.25;">
+            <span style="font-weight: bold;">09/2018 - 11/2019: University of Manchester</span>, Manchester, UK<br>
+            M.Phil. in Pharmacy and Pharmaceutical Sciences<br>
+            Supervisor: Dr. Richard Bryce
+          </p>
+          <p style="padding-bottom: 7.5px; font-size: 15px; line-height: 1.25;">
+            <span style="font-weight: bold;">09/2014 - 09/2018: Shandong Academy of Medical Sciences and University of Jinan</span>, Jinan, China<br>
+            B.Eng. in Pharmaceutical Engineering<br>
+            Supervisor: Dr. Jingyong Sun
+          </p>
+
+          <p style="padding-bottom: 20px; padding-top: 20px"><a href="https://github.com/miemiemmmm" target="_blank">Github</a> |
+            <a href="https://www.linkedin.com/in/yang-zhang-947953172" target="_blank">LinkedIn</a> |
+            <a href="https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/Yang_CV_2023.pdf" target="_blank">CV</a> |
+            <a href="mailto:y.zhang@bioc.uzh.ch" target="_blank">E-Mail</a>
+          </p>
 
           <img id="welcome_bgimage" src="Images/BG_IMAGE" style="position: absolute; top:10px; right:-300px; opacity:0.25; transform: rotate(-30deg); filter: blur(2px); height: 700px; width: auto; z-index: -1;">
         </section>
@@ -51,13 +74,13 @@
         <section data-state="slide_KeyChildModule">
           <p class="slide-title">Development of key sub-systems</p>
           <div class="slide_content_style1">
-            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Training material:</span> Trajectories of complexes selected from PDBBind </p>
-            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Trajectory loader:</span> Automation of trajectory array</p>
-            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Molecule-block generator:</span> Identification of sub-block patterns</p>
-            <p class="slide_item_style1"><span style="color:#C58940; font-weight: bold">Featurizer:</span> Transformation of raw trajectories into feature vectors</p>
-            <p class="slide_item_style1"><span style="color:#C58940; font-weight: bold">Input structure processor:</span> Feature retrieval and pocket reassembly</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Training material:</span> Trajectories of complexes selected from PDBBind </p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Trajectory loader:</span> Automation of trajectory array</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Molecule-block generator:</span> Identification of sub-block patterns</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Featurizer:</span> Transformation of raw trajectories into feature vectors</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Input structure processor:</span> Feature retrieval and pocket reassembly</p>
             <p class="slide_item_style1"><span style="font-weight: bold">Database depositor:</span> Feature storage, retrieval and comparison</p>
-            <p class="slide_item_style1" style="padding-left: 40px"><span style="color:#285430; font-weight: bold">Temporary solution:</span> HDF (Hierarchical Data Format) file</p>
+            <p class="slide_item_style1" style="padding-left: 40px"><span style="font-weight: bold">Temporary solution:</span> HDF (Hierarchical Data Format) file</p>
             <p class="slide_item_style1"><span style="font-weight: bold">Neural network:</span> Prediction of the binding affinity</p>
           </div>
           <div class="image-style1">
@@ -102,7 +125,7 @@
             </figure>
             <figure class="gallery-item PackageArchetecture image-gray gallery-item_style4" style="height: auto !important; width: 30% !important; ">
               <img id="PackageArchetecture_fig6" style="height: 100% !important; width: 100%" >
-              <figcaption>Fig3: Affinity prediction </figcaption>
+              <figcaption>Fig3: Add additional channel in the 3D-based geometric machine learning methods </figcaption>
             </figure>
           </div>
         </section>
@@ -165,6 +188,11 @@
 <!--            </div>-->
 <!--        </div>-->
 
+    <!--
+    TODO list before pushing:
+    1. Change the kjera importing path to the CDN
+    2. Change the public token if needed.
+     -->
 
     <script type="module">
       import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
@@ -183,7 +211,7 @@
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
 
       kjera.set_repo(repo_url);
-      kjera.set_token("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")
+      kjera.set_token("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")
 
       const PRELOAD_FIGURES = true;
       const FIGURES = {};
@@ -231,7 +259,6 @@
           const image1 = "MD_workflow_2.png"
           const image2 = "Trajectory_decomposition.jpg"
           const image3 = "tmp05dodkbp_final_feat.png"
-          console.log("---->", FIGURES)
           if (Object.keys(FIGURES).includes(image1)){
             kjera.setupImage("PackageArchetecture_fig1", FIGURES[image1]);
           } else {

@@ -248,10 +248,10 @@ async function add3DMolObject(divid, fileurl){
   let format = fileurl.split("/").pop().split(".").pop();
   console.log("Adding 3D molObj: Reading the file as ", format)
 
-  const mol_string = atob(await getGithubContents(fileurl))
+  const mol_string = atob(await getUrlContents(fileurl))
   viewer.addModel(mol_string, format);
   viewer.setStyle({}, { stick: {} });
-  viewer.setBackgroundColor("#"+scene_bgcolor)
+  viewer.setBackgroundColor("#FFF9DE");  // TODO: the background color is currently hard coded
   // Zoom to fit the molecule in the viewer and Render the molecule
   viewer.zoomTo();
   viewer.render();
@@ -296,7 +296,7 @@ async function initPLYObject(divid, fileurl){
 
   // Convert the content from base 64 to string
   console.log("Loading the plyfile", fileurl)
-  const plycontent = atob(await getGithubContents(fileurl));
+  const plycontent = atob(await getUrlContents(fileurl));
   var mesh = loadPLYMesh(plycontent, scene, camera, light);
 
   scene.add(mesh);
@@ -326,7 +326,7 @@ function loadPLYMesh(plycontent, scene, camera, light) {
 }
 
 async function addPLYtoStage(fileurl, scene, renderer, camera, light, offsets){
-  const plycontent = atob(await getGithubContents(fileurl));
+  const plycontent = atob(await getUrlContents(fileurl));
   var themesh = loadPLYMesh(plycontent, scene, camera, light);
   themesh.geometry.computeBoundingBox();
   const boundingBox = themesh.geometry.boundingBox;
@@ -357,5 +357,6 @@ export {
   initPLYObject,
   addPLYtoStage,
   add3DMolObject,
-
+  renderGridPoints,
+  resetCanvas,
 }

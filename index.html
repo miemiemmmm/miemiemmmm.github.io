@@ -101,7 +101,7 @@
           <p class="slide-title">Principle hypothesis and objective</p>
           <div class="slide_content_style1">
             <p class="slide_item_style1">1. Ligand binding is primarily determined by local atomic configurations</p>
-            <p class="slide_item_style1" style="padding-bottom: 10px !important; ">2. Reduce the complexity of the binding pocket by decomposing it into smaller "molecule blocks"</p>
+            <p class="slide_item_style1">2. Reduce the complexity of the binding pocket by decomposing it into smaller "molecule blocks"</p>
             <p class="slide_item_style1">3. Static atomic configurations are mapped to dynamic behavior</p>
             <p class="slide_item_style1">4. This map enables predictions for static configurations via the detour of predicting dynamic features</p>
             <p class="content_subtitle"><span class="highlight_style1" style="line-height: 40px">Objective: </span><br><span class="slide_item_style1" style="margin-bottom: 10px">Develop a framework to preprocess molecular dynamics trajectories and prepare input data for voxel-based binding affinity prediction.</span><br> </p>
@@ -200,8 +200,8 @@
     }
     var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
     import { Octokit, App } from "https://esm.sh/octokit";
-    import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
-    // import * as kjera from "./modules.js"    // For local development
+    // import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
+    import * as kjera from "./modules.js"    // For local development
     // kjera.test_function();                   // For local development
     kjera.set_repo(repo_url);
     kjera.set_token(gettok());
@@ -252,7 +252,7 @@
     Reveal.addEventListener('slidechanged', function(event) {
       if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PrincipleHypothesis') {
         if ( !window.hasOwnProperty("voxel_box_set") ) {
-          add_3DMolObject("slide_RefPDBAndBox", repo_url+"data/C209CsDJQucZ_Protein2.pdb")
+          kjera.add3DMolObject("slide_RefPDBAndBox", repo_url+"data/C209CsDJQucZ_Protein2.pdb")
             .then(viewer=>{
               // Set styles for the protein structure
               viewer.setStyle({}, { cartoon:{color: "gray"} } );
@@ -262,7 +262,7 @@
               const center = [22.0947246 , 36.49708133, 21.81810805];
               const ls = [16, 16, 16];
               const dims = [16, 16, 16];
-              renderGridPoints(viewer, center, ls, dims);
+              kjera.renderGridPoints(viewer, center, ls, dims);
               viewer.addBox({center:{x:center[0], y:center[1] ,z:center[2]},
                 dimensions: {w:ls[0], h:ls[1], d:ls[2]},
                 color:'#adf7d1',
@@ -291,12 +291,12 @@
 
               window.voxel_box_set = true;
               window.viewer_RefPDBAndBox = viewer;
-              reset_canvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
+              kjera.resetCanvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
             })
         } else {
           console.log(window.viewer_RefPDBAndBox)
           window.viewer_RefPDBAndBox.render()
-          reset_canvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
+          kjera.resetCanvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
         }
       }
     })

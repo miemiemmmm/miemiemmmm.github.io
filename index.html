@@ -196,27 +196,20 @@
 
     <script type="module">
       import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
-      // import * as kjera from "./modules.js"
-      // kjera.test_function();
-      // kjera.simple_print("introducing new modules")
-      // import { kjera } from "https://cdn.jsdelivr.net/gh/miemiemmmm/HPPT@main/modules.js
-      // import { kjera } from "./modules.js" // local, for development only
-      // import * as kjera from "./modules.js" // local, for development only
+      // import * as kjera from "./modules.js"    // For local development
+      // kjera.test_function();                   // For local development
 
-      const github_auth = {
-        // Authorization: "Bearer GITHUB_FINE_GRAINED_TOKEN",
-        Accept: "application/vnd.github+object",
-      };
-      kjera.setupImage("Images/UZH_LOGO_WEB.png")
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
-
       kjera.set_repo(repo_url);
+      kjera.set_token(atob("Z2l0aHViX3BhdF8xMUFOVzZRVlkwelpUREJZQ2d1TFluX3l0UmdYZEhjU3Z4ZVA5Vjg3UWZZV0JLa3VYNEpscGRBeThrQVNsVG1pNmtMS1JZQ0tTU3B5MHdrakhj"))
+
+      kjera.setupImage("Images/UZH_LOGO_WEB.png")
 
       const PRELOAD_FIGURES = true;
       const FIGURES = {};
       if (PRELOAD_FIGURES == true){
+        // NOTE: Add await to synchronously load the images; remove the await to load asynchronously
         kjera.getAllImages(FIGURES);
-        // console.log(FIGURES); // TODO: remove the await and console.log
       }
       const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
       const IMG_BG = "Images/BG_IMAGE.png";
@@ -280,13 +273,11 @@
 					$(".gallery-item").hover(
 						function() {
 							if ($(this).hasClass('PackageArchetecture')){
-								console.log("Remove gray") //  PackageArchetecture
 								$(this).removeClass('image-gray');
 							}
 						},
 						function() {
 							if ($(this).hasClass('PackageArchetecture')) {
-								console.log("Add back gray")
 								$(this).addClass('image-gray');
 							}
 						}
@@ -319,13 +310,11 @@
 					$(".gallery-item").hover(
 						function() {
 							if ($(this).hasClass('PackageArchetecture')){
-								console.log("Remove gray") //  PackageArchetecture
 								$(this).removeClass('image-gray');
 							}
 						},
 						function() {
 							if ($(this).hasClass('PackageArchetecture')) {
-								console.log("Add back gray")
 								$(this).addClass('image-gray');
 							}
 						}
@@ -386,7 +375,7 @@
 
 				const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-				console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
+				// console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
 				// $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
 
 				// setup break slide

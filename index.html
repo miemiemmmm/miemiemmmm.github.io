@@ -24,7 +24,7 @@
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
     <script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script src="https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js"></script>-->
 
 </head>
 <body>
@@ -47,24 +47,66 @@
           <img id="welcome_bgimage" src="Images/BG_IMAGE" style="position: absolute; top:10px; right:-300px; opacity:0.25; transform: rotate(-30deg); filter: blur(2px); height: 700px; width: auto; z-index: -1;">
         </section>
 
-        <section data-state="slide_">
-          <p class="slide-title">This is a Template Slide for Demonstration</p>
+
+        <section data-state="slide_KeyChildModule">
+          <p class="slide-title">Development of key sub-systems</p>
           <div class="slide_content_style1">
-            <p>This is a Template Main Context1</p>
-            <p>This is a Template Main Context2</p>
-            <p>This is a Template Main Context3</p>
+            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Training material:</span> Trajectories of complexes selected from PDBBind </p>
+            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Trajectory loader:</span> Automation of trajectory array</p>
+            <p class="slide_item_style1"><span style="color:#285430; font-weight: bold">Molecule-block generator:</span> Identification of sub-block patterns</p>
+            <p class="slide_item_style1"><span style="color:#C58940; font-weight: bold">Featurizer:</span> Transformation of raw trajectories into feature vectors</p>
+            <p class="slide_item_style1"><span style="color:#C58940; font-weight: bold">Input structure processor:</span> Feature retrieval and pocket reassembly</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Database depositor:</span> Feature storage, retrieval and comparison</p>
+            <p class="slide_item_style1" style="padding-left: 40px"><span style="color:#285430; font-weight: bold">Temporary solution:</span> HDF (Hierarchical Data Format) file</p>
+            <p class="slide_item_style1"><span style="font-weight: bold">Neural network:</span> Prediction of the binding affinity</p>
           </div>
-          <p class="reference_style">This is a template reference.</p>
-        </section>
-        <section data-state="slide_">
-          <p class="slide-title">This is a Template Slide for Demonstration</p>
-          <div class="slide_content_style1">
-            <p>This is a Template Main Context1</p>
-            <p>This is a Template Main Context2</p>
-            <p>This is a Template Main Context3</p>
+          <div class="image-style1">
+            <figure class="gallery-item gallery-item_style2" style="width: 100% !important;">
+              <img id="img_childmodules" style="width: 100% !important; height: auto; margin-bottom: 50px; ">
+              <!--						<img id="img_childmodules" style="{width: 100% !important; height: auto; margin-bottom: 50px} :hover {transform: scale(1.5) !important} ">-->
+              <figcaption class="content_subtitle" for="img_childmodules">Fig1. Information flow of trajectory features and the organization of corresponding sub-systems</figcaption>
+            </figure>
           </div>
-          <p class="reference_style">This is a template reference.</p>
         </section>
+
+        <section data-state="slide_PackageArchetecture">
+          <p class="slide-title">Feature database construction </p>
+          <!--Attach the representation of the Package Archetecture-->
+          <div class="gallery" style="top:30% !important;">
+            <figure class="gallery-item PackageArchetecture image-gray">
+              <img id="PackageArchetecture_fig1" style="height: 200px !important; " src="">
+              <figcaption for="PackageArchetecture_fig1">Fig1: Batch MD simulation using the ACGui</figcaption>
+            </figure>
+            <figure class="gallery-item PackageArchetecture image-gray">
+              <img id="PackageArchetecture_fig2">
+              <figcaption for="PackageArchetecture_fig2">Fig2: Automated pipeline for trajectory decomposition</figcaption>
+            </figure>
+            <figure class="gallery-item PackageArchetecture image-gray">
+              <img id="PackageArchetecture_fig3">
+              <figcaption for="PackageArchetecture_fig3">Fig3: Feature generation, representation, and storage</figcaption>
+            </figure>
+
+          </div>
+        </section>
+
+        <section data-state="slide_PackageArchetecture2">
+          <p class="slide-title">Decomposing binding pockets and predicting affinity </p>
+          <div class="gallery" style="top:30% !important;">
+            <figure class="gallery-item PackageArchetecture image-gray" >
+              <img id="PackageArchetecture_fig4">
+              <figcaption for="PackageArchetecture_fig4">Fig1: An example binding pose to predict</figcaption>
+            </figure>
+            <figure class="gallery-item PackageArchetecture image-gray" >
+              <img id="PackageArchetecture_fig5">
+              <figcaption for="PackageArchetecture_fig5">Fig2: Binding pocket extraction, "molecule block" retrieval and feature reassembly</figcaption>
+            </figure>
+            <figure class="gallery-item PackageArchetecture image-gray gallery-item_style4" style="height: auto !important; width: 30% !important; ">
+              <img id="PackageArchetecture_fig6" style="height: 100% !important; width: 100%" >
+              <figcaption>Fig3: Affinity prediction </figcaption>
+            </figure>
+          </div>
+        </section>
+
 <!--        <section data-state="slide_">-->
 <!--          <p class="slide-title">This is a Template Slide for Demonstration</p>-->
 <!--          <div class="slide_content_style1">-->
@@ -125,7 +167,8 @@
 
 
     <script type="module">
-      import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js';
+      // import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/Kjera@main/modules.js';
+      import * as kjera from "./modules.js"
       // kjera.test_function();
       // kjera.simple_print("introducing new modules")
       // import { kjera } from "https://cdn.jsdelivr.net/gh/miemiemmmm/HPPT@main/modules.js
@@ -136,7 +179,7 @@
         // Authorization: "Bearer GITHUB_FINE_GRAINED_TOKEN",
         Accept: "application/vnd.github+object",
       };
-
+      kjera.setupImage("Images/UZH_LOGO_WEB.png")
       var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
 
       kjera.set_repo(repo_url);
@@ -151,10 +194,11 @@
       const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
       const IMG_BG = "Images/BG_IMAGE.png";
       await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
+      var univ_logo;
 
       (async ()=>{
         // Set university logo
-        var univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
+        univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
         var imgdiv = document.createElement('img');
         imgdiv.classList.add('uzh_logo');
         imgdiv.src = univ_logo;
@@ -170,6 +214,136 @@
         transition: 'convex',
         backgroundTransition: "zoom"
       });
+
+      Reveal.addEventListener('slidechanged', function(event) {
+				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture') {
+          const image1 = "Images/MD_workflow_2.png"
+          console.log("---->", FIGURES)
+          // if (Object.keys(FIGURES).includes("MD_workflow_2.png")){
+          //   kjera.setupImage("PackageArchetecture_fig1", FIGURES["MD_workflow_2.png"]);
+          // }
+					kjera.setupImage("PackageArchetecture_fig1", MD_workflow_2);
+					kjera.setupImage("PackageArchetecture_fig2", Trajectory_decomposition);
+					kjera.setupImage("PackageArchetecture_fig3", tmp05dodkbp_final_feat);
+					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+					const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+
+					$(".gallery-item").hover(
+						function() {
+							if ($(this).hasClass('PackageArchetecture')){
+								console.log("Remove gray") //  PackageArchetecture
+								$(this).removeClass('image-gray');
+							}
+						},
+						function() {
+							if ($(this).hasClass('PackageArchetecture')) {
+								console.log("Add back gray")
+								$(this).addClass('image-gray');
+							}
+						}
+					);
+				}
+			})
+
+      Reveal.addEventListener('slidechanged', function(event) {
+				if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture2') {
+					setupImage("PackageArchetecture_fig4", Image_pocket);
+					setupImage("PackageArchetecture_fig5", MBlock_retrieval);
+					setupImage("PackageArchetecture_fig6", Example_3D_CNN);
+					const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+					$("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+					$(".gallery-item").hover(
+						function() {
+							if ($(this).hasClass('PackageArchetecture')){
+								console.log("Remove gray") //  PackageArchetecture
+								$(this).removeClass('image-gray');
+							}
+						},
+						function() {
+							if ($(this).hasClass('PackageArchetecture')) {
+								console.log("Add back gray")
+								$(this).addClass('image-gray');
+							}
+						}
+					);
+				}
+			})
+
+
+
+      function update_page_number(event, pageNumberID){
+        if (event){
+          var pageNumber = event.indexh + 1;
+        } else {
+          var pageNumber = 1;
+        }
+        var totalPages = Reveal.getTotalSlides();
+        var pageString = pageNumber + '/' + totalPages;
+        var pageNumberElement = document.querySelector( pageNumberID );
+        if ( pageNumberElement ) {
+          pageNumberElement.innerHTML = pageString;
+          pageNumberElement.style.zIndex = 0
+        } else {
+          var pagediv = document.createElement( 'div' );
+          pagediv.classList.add( 'page-number' );
+          pagediv.innerHTML = pageString;
+          pagediv.style.zIndex = 0
+          document.body.appendChild( pagediv );
+        }
+      }
+
+      kjera.update_page_number(false, '.page-number' );
+
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+				// Add the UZH logo
+				var uzhLogoElement = document.querySelector( '.uzh_logo' );
+				if ( uzhLogoElement ) {
+					uzhLogoElement.src = univ_logo;
+				} else {
+					var imgdiv = document.createElement( 'img' );
+					imgdiv.classList.add( 'uzh_logo' );
+					imgdiv.src = univ_logo;
+					document.body.appendChild( imgdiv );
+				}
+
+        kjera.update_page_number(event, '.page-number' );
+
+
+				// var symbol_fig = document.querySelector( '.symbol_fig' );
+				// if ( symbol_fig ) {
+				// 	symbol_fig.src = box2_trans
+				// } else {
+				// 	var symboldiv = document.createElement( 'img' );
+				// 	symboldiv.classList.add( 'symbol_fig' );
+				// 	symboldiv.src = box2_trans;
+				// 	symboldiv.style.zIndex = 0
+				// 	document.body.appendChild(symboldiv)
+				// }
+
+				const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+				console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
+				// $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
+
+				// setup break slide
+				// var found_chapterbreak = event.currentSlide.querySelector( '.chapter_break_container' );
+				// var found_chapterbreakimg = event.currentSlide.querySelector( '.chapter_break_container img' );
+				// if ( found_chapterbreak && found_chapterbreakimg.src.slice(0,4) !== "data") {
+				// 	// found_chapterbreakimg.src = Snap_bfl1_bh3;
+				// 	found_chapterbreakimg.src = tmpo_gbx3oc_final_conf
+				// 	found_chapterbreakimg.style.zIndex = -10;
+				// 	found_chapterbreakimg.style.width = '75%';
+				// 	found_chapterbreakimg.style.position = "absolute"
+				// 	found_chapterbreakimg.style.transform = 'rotate(-30deg)';
+				// 	found_chapterbreakimg.style.filter = "blur(5px)";
+				// 	found_chapterbreakimg.style.bottom = 0;
+				// 	found_chapterbreakimg.style.right = "-30%";
+				// 	found_chapterbreakimg.style.opacity = 0.2;
+				// 	var chapterbreak = document.querySelector( '.chapter_break')
+				// 	chapterbreak.style.zIndex = 999
+				// }
+			});
 
       // Move the laser pointer with the mouse
       // Laser pointer function for the slides

@@ -1,4 +1,4 @@
-Yang Zhang's Homepage
+# Yang Zhang's Homepage
 
 ## <p style="color:red">The page is still under construction. I will update it as soon as possible. </p>
 

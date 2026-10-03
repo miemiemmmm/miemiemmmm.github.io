@@ -16,8 +16,7 @@
     ".hero .wrap > *",
     "section h2",
     "section .section-note",
-    ".grid .card",
-    ".figure-row figure",
+    ".fields > details",
     ".viewer-shell",
     "ol.pubs li",
     ".repo-grid .repo",
@@ -154,4 +153,36 @@
     .catch(function (error) {
       fail("The structure could not be loaded (" + error.message + ").");
     });
+})();
+
+/* --- email reveal -------------------------------------------------
+   The address is XOR-ed against a key, so neither the markup nor this
+   file contains it as readable text. That defeats harvesters that scrape
+   for an address pattern; it is obfuscation, not access control.
+   ------------------------------------------------------------------ */
+
+(function revealEmail() {
+  var holder = document.getElementById("mail-reveal");
+  var button = document.getElementById("mail-button");
+  var out = document.getElementById("mail-out");
+  if (!holder || !button || !out) return;
+
+  var CIPHER = [17, 84, 3, 3, 87, 71, 50, 10, 30, 13, 77, 7, 10];
+  var KEY = "h5md-trajectory-metadata";
+
+  // Only offer the button once we know the script is running.
+  holder.hidden = false;
+
+  button.addEventListener("click", function () {
+    var address = CIPHER.map(function (byte, i) {
+      return String.fromCharCode(byte ^ KEY.charCodeAt(i % KEY.length));
+    }).join("");
+
+    var link = document.createElement("a");
+    link.href = "mailto:" + address;
+    link.textContent = address;
+    out.replaceChildren(link);
+    out.hidden = false;
+    holder.hidden = true;
+  });
 })();

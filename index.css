@@ -196,39 +196,67 @@ section .section-note {
   font-size: .95rem;
 }
 
-/* --- research cards -------------------------------------------- */
+/* --- research accordion ---------------------------------------- */
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+.fields { display: grid; gap: 10px; }
+
+.field {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.field[open] { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+
+.field summary {
+  display: flex;
+  align-items: flex-start;
   gap: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
 }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-}
-.card h3 { font-size: 1rem; margin: 0 0 8px; }
-.card p { margin: 0; color: var(--muted); font-size: .95rem; }
+.field-head { display: grid; gap: 3px; min-width: 0; }
+.field-title { font-size: 1rem; font-weight: 600; }
+.field-teaser { font-size: .9rem; color: var(--muted); }
+/* Hide the default disclosure triangle in both engines. */
+.field summary::-webkit-details-marker { display: none; }
+.field summary:hover .field-title { color: var(--accent); }
+.field summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--radius); }
 
-.figure-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 26px;
+.field summary::after {
+  content: "";
+  margin-left: auto;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: translateY(4px) rotate(45deg);
+  transition: transform .2s ease;
 }
+.field[open] summary::after { transform: translateY(8px) rotate(-135deg); }
+
+.field-body { padding: 0 20px 20px; }
+.field-body p {
+  margin: 0 0 12px;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: .95rem;
+}
+.field-body p:last-child { margin-bottom: 0; }
+
 figure.fig {
-  margin: 0;
+  margin: 18px 0 0;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 10px;
   overflow: hidden;
 }
 figure.fig img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  max-height: 420px;
   /* Scientific figures are drawn on white; show them whole, never cropped. */
   object-fit: contain;
   background: #fff;
@@ -390,6 +418,19 @@ ul.timeline li:last-child { border-bottom: 0; }
   font-size: 1.05rem;
   margin: 0 0 22px;
 }
+
+.reveal-mail { margin: 0 0 22px; }
+.reveal-mail button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.reveal-mail button:hover { border-color: var(--accent); color: var(--accent); }
 
 footer {
   padding: 36px 0 56px;

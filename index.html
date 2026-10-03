@@ -13,7 +13,7 @@
   <meta property="og:title" content="Yang Zhang — Molecular Simulation &amp; Computational Drug Discovery">
   <meta property="og:description" content="Postdoctoral researcher and GROMACS core developer at KTH and SciLifeLab. Molecular dynamics, trajectory data standards, and machine learning for drug discovery.">
   <meta property="og:url" content="https://miemiemmmm.github.io/">
-  <meta property="og:image" content="https://miemiemmmm.github.io/Images/Overall_workflow.jpg">
+  <meta property="og:image" content="https://miemiemmmm.github.io/figures/Overall_workflow.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
@@ -26,7 +26,6 @@
     "name": "Yang Zhang",
     "alternateName": "张杨",
     "url": "https://miemiemmmm.github.io/",
-    "email": "mailto:yangz3@kth.se",
     "jobTitle": "Postdoctoral Researcher and GROMACS Core Developer",
     "affiliation": [
       { "@type": "Organization", "name": "KTH Royal Institute of Technology" },
@@ -73,14 +72,12 @@
 </nav>
 
 <header class="hero" id="top">
-  <img class="hero-bg" src="Images/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="hero-bg" src="figures/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy">
   <div class="wrap">
     <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
     <h1>Yang Zhang<span class="cn">张杨</span></h1>
     <p class="role">
-      Postdoctoral researcher and GROMACS core developer in the
-      <a href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>,
-      KTH Royal Institute of Technology &amp; SciLifeLab.
+      Postdoctoral researcher &amp; GROMACS core developer at KTH Royal Institute of Technology &amp; SciLifeLab.
     </p>
     <p class="lede">
       I build the computational machinery that makes molecular dynamics data reusable — trajectory
@@ -88,12 +85,12 @@
       and benchmarks that test how well those models really recognise flexible 3D molecules.
     </p>
     <div class="links">
-      <a class="btn primary" href="mailto:yangz3@kth.se">yangz3@kth.se</a>
-      <a class="btn" href="https://github.com/miemiemmmm">GitHub</a>
+      <a class="btn primary" href="https://github.com/miemiemmmm">GitHub</a>
       <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
       <a class="btn" href="https://orcid.org/0000-0003-0801-8064">ORCID</a>
       <a class="btn" href="https://www.linkedin.com/in/yang-zhang-947953172/">LinkedIn</a>
-      <a class="btn" href="Yang_CV_2023.pdf">CV (PDF)</a>
+      <a class="btn" href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>
+      <a class="btn" href="CV/Yang_CV_2023.pdf">CV (PDF)</a>
     </div>
   </div>
 </header>
@@ -108,56 +105,133 @@
       Most of my work sits at the seam between the two.
     </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Trajectory formats &amp; metadata</h3>
-        <p>
-          Leading the integration of metadata and provenance into the
-          <a href="https://h5md.nongnu.org/h5md.html">H5MD</a> trajectory format in
-          <a href="https://gitlab.com/gromacs/gromacs">GROMACS</a>, so a trajectory stays
-          self-describing long after the run that produced it.
-        </p>
-      </div>
-      <div class="card">
-        <h3>FAIR simulation data</h3>
-        <p>
-          Work with the <a href="https://mddbr.eu">MDDB</a> consortium and other MD software teams
-          (NAMD, VMD, ViaMD) on shared standards, and co-development of the
-          <a href="https://github.com/CPCLab/molsim-ontology">MOLSIM</a> ontology for a common
-          vocabulary across the field.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Dynamic feature extraction</h3>
-        <p>
-          Turning ensembles of trajectories into voxel-based descriptors of binding pockets, instead of
-          featurising a single static pose — the idea behind
-          <a href="https://github.com/miemiemmmm/Nearl">Nearl</a>.
-        </p>
-      </div>
-      <div class="card">
-        <h3>3D molecular recognition</h3>
-        <p>
-          How robust are CNN, GNN, PointNet- and Transformer-style models when the 3D object they must
-          recognise is flexible? <a href="https://github.com/miemiemmmm/FEater">FEater</a> is a dataset
-          built to answer that honestly.
-        </p>
-      </div>
-    </div>
+    <div class="fields">
 
-    <div class="figure-row">
-      <figure class="fig">
-        <img src="Images/Overall_workflow.jpg" alt="Information flow from molecular dynamics trajectories to stored features" loading="lazy">
-        <figcaption>Information flow of trajectory features and the sub-systems that produce them.</figcaption>
-      </figure>
-      <figure class="fig">
-        <img src="Images/Trajectory_decomposition.jpg" alt="Automated pipeline decomposing a trajectory into molecule blocks" loading="lazy">
-        <figcaption>Automated pipeline for trajectory decomposition into reusable molecule blocks.</figcaption>
-      </figure>
-      <figure class="fig">
-        <img src="Images/Example_3D_CNN.png" alt="Voxelised features entering a 3D convolutional neural network" loading="lazy">
-        <figcaption>Dynamic features become an additional channel for 3D geometric deep learning.</figcaption>
-      </figure>
+      <details class="field" name="research" open>
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Trajectory formats &amp; metadata</span>
+            <span class="field-teaser">Making a trajectory file describe itself.</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            A trajectory on disk is just coordinates. Which force field produced it, which code
+            version, which thermostat — that context usually lives in a lab notebook, a directory
+            name, or someone's memory, and it is the first thing lost.
+          </p>
+          <p>
+            I lead the integration of metadata and provenance into the
+            <a href="https://h5md.nongnu.org/h5md.html">H5MD</a> format in
+            <a href="https://gitlab.com/gromacs/gromacs">GROMACS</a>, so that context travels inside
+            the file itself and a trajectory stays interpretable long after the run that produced it.
+          </p>
+        </div>
+      </details>
+
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">FAIR simulation data</span>
+            <span class="field-teaser">Shared standards, so simulations outlive the project that ran them.</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            A format only helps if the rest of the field reads it. I work with the
+            <a href="https://mddbr.eu">MDDB</a> consortium and with developers of other MD software —
+            NAMD, VMD, ViaMD — on standards that hold across tools rather than inside one of them.
+          </p>
+          <p>
+            Alongside that, co-development of the
+            <a href="https://github.com/CPCLab/molsim-ontology">MOLSIM</a> ontology gives the domain a
+            shared vocabulary, and earlier work set out a FAIR-compliant way to manage simulation
+            trajectories
+            (<a href="https://doi.org/10.1021/acs.jcim.4c01301"><em>J. Chem. Inf. Model.</em> 2025</a>).
+          </p>
+        </div>
+      </details>
+
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Dynamic feature extraction</span>
+            <span class="field-teaser">Featurising an ensemble of trajectories, not a single frozen pose.</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Structure-based affinity prediction usually starts from one static pose, which throws away
+            exactly what the simulation was run to capture. <a href="https://github.com/miemiemmmm/Nearl">Nearl</a>
+            instead turns an ensemble of trajectories into voxel-based descriptors of the binding pocket.
+          </p>
+          <p>
+            The pocket is decomposed into smaller “molecule blocks”, each featurised on its own, so a
+            feature computed from one trajectory can be reused when the same local configuration turns
+            up in a different structure
+            (<a href="https://doi.org/10.1093/bioinformatics/btaf321"><em>Bioinformatics</em> 2025</a>).
+          </p>
+          <figure class="fig">
+            <img src="figures/Overall_workflow.jpg" alt="Information flow from molecular dynamics trajectories to stored features" loading="lazy">
+            <figcaption>Information flow of trajectory features and the sub-systems that produce them.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="figures/Trajectory_decomposition.jpg" alt="Automated pipeline decomposing a trajectory into molecule blocks" loading="lazy">
+            <figcaption>Automated pipeline for trajectory decomposition into reusable molecule blocks.</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">3D molecular recognition</span>
+            <span class="field-teaser">How well do ML models recognise a molecule that keeps moving?</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Benchmarks for 3D object recognition mostly use rigid objects. Molecules are not rigid, and
+            a model that scores well on a fixed conformer may be reading pose rather than identity.
+          </p>
+          <p>
+            <a href="https://github.com/miemiemmmm/FEater">FEater</a> is a molecular fragment dataset
+            built to test that honestly across CNN, GNN, PointNet- and Transformer-style architectures
+            (<a href="https://doi.org/10.1016/j.patter.2024.101147"><em>Patterns</em> 2025</a>).
+          </p>
+          <figure class="fig">
+            <img src="figures/Example_3D_CNN.png" alt="Voxelised features entering a 3D convolutional neural network" loading="lazy">
+            <figcaption>Dynamic features become an additional channel for 3D geometric deep learning.</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Drug discovery platform</span>
+            <span class="field-teaser">Set up, run, store and analyse a campaign without leaving the browser.</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Running a screening campaign normally means stitching together system preparation, a
+            scheduler, storage and half a dozen analysis scripts.
+            <a href="https://acgui.bioc.uzh.ch/acgui/">ACGui</a> closes that loop in one browser-based
+            platform: set the system up, dispatch it to HPC, keep the trajectories, then play them back
+            and analyse them in place.
+          </p>
+          <p>
+            The automated system-preparation workflow reaches a success rate above 80%, which is what
+            makes running simulations in batch realistic rather than a per-system chore.
+          </p>
+          <figure class="fig">
+            <img src="figures/MD_workflow_2.png" alt="Batch molecular dynamics simulation dispatched from the ACGui platform" loading="lazy">
+            <figcaption>Batch MD simulation set up and dispatched through ACGui.</figcaption>
+          </figure>
+        </div>
+      </details>
+
     </div>
   </div>
 </section>
@@ -188,16 +262,8 @@
 <section id="publications">
   <div class="wrap">
     <h2>Selected publications</h2>
-    <p class="section-note">Full list on <a href="https://orcid.org/0000-0003-0801-8064">ORCID</a>.</p>
 
     <ol class="pubs">
-      <li>
-        <div class="pub-year">2026</div>
-        <div>
-          <p class="pub-title"><a href="https://doi.org/10.6084/m9.figshare.31267465">H5MD Trajectory Format in GROMACS: Integrating Metadata with Molecular Simulation Data</a><span class="badge">poster</span></p>
-          <p class="pub-meta">Zhang, Y. <em>et al.</em></p>
-        </div>
-      </li>
       <li>
         <div class="pub-year">2025</div>
         <div>
@@ -234,13 +300,15 @@
         </div>
       </li>
       <li>
-        <div class="pub-year">2023</div>
+        <div class="pub-year">2026</div>
         <div>
-          <p class="pub-title"><a href="https://doi.org/10.1021/acsphyschemau.3c00021">Disrupting Dimeric β-Amyloid by Electric Fields</a></p>
-          <p class="pub-meta">Vargas-Rosales, P. A. <em>et al.</em> (incl. Zhang, Y.) — <em>ACS Physical Chemistry Au</em></p>
+          <p class="pub-title"><a href="https://doi.org/10.6084/m9.figshare.31267465">H5MD Trajectory Format in GROMACS: Integrating Metadata with Molecular Simulation Data</a><span class="badge">poster</span></p>
+          <p class="pub-meta">Zhang, Y. <em>et al.</em></p>
         </div>
       </li>
     </ol>
+
+    <p class="section-note">Full publication list on <a href="https://orcid.org/0000-0003-0801-8064">ORCID</a>.</p>
   </div>
 </section>
 
@@ -345,7 +413,16 @@
   <div class="wrap">
     <h2>Contact</h2>
     <p class="section-note">Happy to talk about trajectory formats, featurisation, or anything that makes simulation data more reusable.</p>
-    <p class="contact-mail"><a href="mailto:yangz3@kth.se">yangz3@kth.se</a></p>
+    <p class="reveal-mail" id="mail-reveal" hidden>
+      <button type="button" id="mail-button">Show email address</button>
+    </p>
+
+    <p class="contact-mail" id="mail-out" hidden></p>
+
+    <noscript>
+      <p class="muted">My email address is shown with JavaScript enabled — otherwise reach me
+      through any of the links below.</p>
+    </noscript>
     <div class="links">
       <a class="btn" href="https://github.com/miemiemmmm">GitHub</a>
       <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
@@ -361,7 +438,6 @@
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Yang Zhang</span>
-    <span>Built as a static page, served by GitHub Pages.</span>
   </div>
 </footer>
 

@@ -1,24 +1,15 @@
 # Yang Zhang's homepage
 
-Assess  my personal homepage: <https://miemiemmmm.github.io/>
+Access my personal homepage: <https://miemiemmmm.github.io/>
 
-<!-- A single static page — no build step, no framework. Deployed to GitHub Pages by
-[`.github/workflows/static.yml`](.github/workflows/static.yml) on every push to `main`.
+## Changing the email address
 
-```
-index.html    page content and metadata (Open Graph, JSON-LD)
-index.css     design tokens and layout, light/dark aware
-index.js      scroll reveal + the interactive binding-pocket viewer
-Images/       figures used on the page
-data/         example structure rendered by 3Dmol.js
-```
-
-## Local preview
+The address is XOR-ed against `KEY` in `index.js`, so it appears nowhere in the
+source as plain text — searching the repository for it will find nothing. To
+change it, regenerate the cipher:
 
 ```bash
-python3 -m http.server 8000
-# then open http://localhost:8000
+python3 -c 'k="h5md-trajectory-metadata"; e="new@address"; print([ord(c)^ord(k[i%len(k)]) for i,c in enumerate(e)])'
 ```
 
-A plain `file://` open also works, except for the 3D viewer: it fetches the
-structure from `data/`, which the browser blocks over `file://`. -->
+and paste the result into `CIPHER`.

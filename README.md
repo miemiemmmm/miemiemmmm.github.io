@@ -1,8 +1,8 @@
-# miemiemmmm.github.io
+# Yang Zhang's homepage
 
-Source of my personal homepage: <https://miemiemmmm.github.io/>
+Assess  my personal homepage: <https://miemiemmmm.github.io/>
 
-A single static page — no build step, no framework. Deployed to GitHub Pages by
+<!-- A single static page — no build step, no framework. Deployed to GitHub Pages by
 [`.github/workflows/static.yml`](.github/workflows/static.yml) on every push to `main`.
 
 ```
@@ -21,4 +21,4 @@ python3 -m http.server 8000
 ```
 
 A plain `file://` open also works, except for the 3D viewer: it fetches the
-structure from `data/`, which the browser blocks over `file://`.
+structure from `data/`, which the browser blocks over `file://`. -->

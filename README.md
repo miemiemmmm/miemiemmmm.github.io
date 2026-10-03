@@ -1,7 +1,15 @@
-# Yang Zhang's Homepage
+# Yang Zhang's homepage
 
-## <p style="color:red">The page is still under construction. I will update it as soon as possible. </p>
+Access my personal homepage: <https://miemiemmmm.github.io/>
 
-This is the repository for my personal website. Visit the following [link](https://miemiemmmm.github.io/) to see the website.
+## Changing the email address
 
+The address is XOR-ed against `KEY` in `index.js`, so it appears nowhere in the
+source as plain text — searching the repository for it will find nothing. To
+change it, regenerate the cipher:
 
+```bash
+python3 -c 'k="h5md-trajectory-metadata"; e="new@address"; print([ord(c)^ord(k[i%len(k)]) for i,c in enumerate(e)])'
+```
+
+and paste the result into `CIPHER`.

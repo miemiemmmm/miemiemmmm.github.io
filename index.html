@@ -1,463 +1,478 @@
 <!doctype html>
-<html class="html_prop" lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yang Zhang</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="module">
-        // Load the three.js for 3d object visualization
-        import * as THREE from  "https://cdn.jsdelivr.net/npm/three@0.127.0/build/three.module.js"
-        import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/controls/OrbitControls.js"
-        import { PLYLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/PLYLoader.js"
-        window.THREE = THREE;
-        window.OrbitControls = OrbitControls;
-        window.PLYLoader = PLYLoader
-    </script>
+  <title>Yang Zhang — Molecular Simulation &amp; Computational Drug Discovery</title>
+  <meta name="author" content="Yang Zhang">
+  <meta name="description" content="Yang Zhang (张杨), PhD — postdoctoral researcher and GROMACS core developer at KTH Royal Institute of Technology and SciLifeLab. Molecular dynamics, trajectory data standards, and machine learning for drug discovery.">
+  <link rel="canonical" href="https://miemiemmmm.github.io/">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css" integrity="sha512-V5fKCVKOFy36w8zJmLzPH5R6zU6KvuHOvxfMRczx2ZeqTjKRGSBO9yiZjCKEJS3n6EmENwrH/xvSwXqxje+VVA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js" integrity="sha512-QYXU3Cojl94ZRiZRjUZpyg1odj9mKTON9MsTMzGNx/L3JqvMA3BQNraZwsZ83UeisO+QMVfFa83SyuYYJzR9hw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" integrity="sha512-jGR1T3dQerLCSm/IGEGbndPwzszJBlKQ5Br9vuB0Pw2iyxOy+7AK+lJcCC8eaXyz/9du+bkCy4HXxByhxkHf+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-    <script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML"></script>
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Yang Zhang — Molecular Simulation &amp; Computational Drug Discovery">
+  <meta property="og:description" content="Postdoctoral researcher and GROMACS core developer at KTH and SciLifeLab. Molecular dynamics, trajectory data standards, and machine learning for drug discovery.">
+  <meta property="og:url" content="https://miemiemmmm.github.io/">
+  <meta property="og:image" content="https://miemiemmmm.github.io/figures/Overall_workflow.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+  <link rel="stylesheet" href="index.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yang Zhang",
+    "alternateName": "张杨",
+    "url": "https://miemiemmmm.github.io/",
+    "jobTitle": "Postdoctoral Researcher and GROMACS Core Developer",
+    "affiliation": [
+      { "@type": "Organization", "name": "KTH Royal Institute of Technology" },
+      { "@type": "Organization", "name": "Science for Life Laboratory (SciLifeLab)" }
+    ],
+    "alumniOf": [
+      { "@type": "Organization", "name": "University of Zurich" },
+      { "@type": "Organization", "name": "University of Manchester" }
+    ],
+    "knowsAbout": [
+      "Molecular dynamics simulation",
+      "Computer-aided drug design",
+      "Machine learning",
+      "Cheminformatics",
+      "Research data management"
+    ],
+    "identifier": "https://orcid.org/0000-0003-0801-8064",
+    "sameAs": [
+      "https://github.com/miemiemmmm",
+      "https://gitlab.com/credo_zhang",
+      "https://orcid.org/0000-0003-0801-8064",
+      "https://www.linkedin.com/in/yang-zhang-947953172/",
+      "https://molecular.biophysics.se/members/yang-zhang/"
+    ]
+  }
+  </script>
+
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-  <div class="main_container reveal">
-    <div class="reveal">
-      <div class="laser-pointer"></div>
-      <div class="slides" id="slide_container">
-        <section data-state="Title_Page" style="text-align: justify; padding-left: 5%;">
-          <img src="Images/biochemgroup_zuerich_2022_yang.jpeg" style="position: absolute; left:75%; top:7%" id="personal_photo">
-          <h1 style="padding-top:7.0%; padding-bottom:25px; font-size: 35px; color: #0C356A; -webkit-text-stroke: 0.75px #FF90C2;
-          font-family: 'monospace'; font-weight:bolder; ">Yang Zhang (张杨)</h1>
-          <p style="padding-bottom: 20px; font-size:15px; line-height: 1.25; width: 65%">
-            I am a Ph.D. student in <a href="http://www.biochem-caflisch.uzh.ch/" style="color: black; font-family: cursive; " target="_blank">Amedeo Caflisch's group</a> at the University of Zurich.
-            I played a key role in the development of a web-based drug discovery platform (<a href="http://130.60.168.149/ACyang/search2.html" class="href_style" target="_blank">ACGui</a>) to facilitate high-throughput virtual screening and molecular dynamics (MD) simulations.
-            Currently, I am working on a framework for the systematic extraction of the dynamic features from MD trajectories.
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">🐑 <span class="brand-full">Yang Zhang</span></a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#structure">Binding pocket</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="hero-bg" src="figures/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
+      <h1>Yang Zhang<span class="cn">张杨</span></h1>
+      <p class="role">
+        Postdoctoral researcher &amp; GROMACS core developer at KTH Royal Institute of Technology &amp; SciLifeLab.
+      </p>
+      <p class="lede">
+        I focus on integration of molecular dynamics simulation techiniques with machine learning for drug discovery. 
+        My work builds the computational machinery that makes  data reusable; 
+        develops algorithms to extract dynamic features;
+        and develops drug discovery platforms for computer-aided drug design.
+      </p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/miemiemmmm">GitHub</a>
+        <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
+        <a class="btn" href="https://orcid.org/0000-0003-0801-8064">ORCID</a>
+        <a class="btn" href="https://www.linkedin.com/in/yang-zhang-947953172/">LinkedIn</a>
+        <a class="btn" href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>
+        <a class="btn" href="CV/Yang_CV_2023.pdf">CV (PDF)</a>
+      </div>
+    </div>
+    <img class="hero-portrait" src="figures/biochemgroup_zuerich_2022_yang.jpeg"
+         alt="Portrait of Yang Zhang" width="176" height="220">
+  </div>
+</header>
+
+<main>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research</h2>
+    <p class="section-note">
+      Physics-based simulation produces enormous amounts of data; data-driven methods are hungry for it.
+      Most of my work sits at the seam between the two.
+    </p>
+
+    <div class="fields">
+
+      <details class="field" name="research" open>
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Trajectory file format &amp; metadata schema</span>
+            <span class="field-teaser">Let trajectory files describe themselves!</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            MD data is highly fragmented. Trajectory, topology, energy, MD parameters and force field are
+            loosely coupled with each other. Scientists often have to dive into the messy directory tree, scripts,
+            and lab notebooks to recall the simulation file and protocols. 
           </p>
-          <h2 style="padding-bottom: 10px; font-size: 20px; font-weight: bold; ">Research Interests: </h2>
-          <p style="padding-bottom: 10px; font-size:15px; line-height: 1.25">
-            I am proactively exploring the interface between MD simulation and machine learning to accelerate drug discovery.
-            Using 3D-based geometric deep learning and data-driven methods to improve the molecular interaction pattern is the most attractive part of my research.
+          <p>
+            I lead the development and integration of 
+            <a href="https://gromacs.gitlab.io/h5md-biophysics/">"Biophysics" metadata schema</a> into the H5MD format
+            and provenance module in GROMACS, so that the trajectory files become self-consistent upon generation,
+            and could trace back to the simulation setup and parameters even years later.
           </p>
-          <p style="padding-bottom: 20px; font-size:15px;">For further exploration of the prototype, hit the <span style="font-weight: bold; font-size: 15px !important;" class="highlight_style1">right key</span>
-            or the <span style="font-weight: bold; font-size: 15px !important;" class="highlight_style1">arrow button</span> on the lower-right corner. </p>
+        </div>
+      </details>
 
-          <h2 style="padding-bottom: 10px; font-size: 20px; font-weight: bold; ">Education:</h2>
-          <p style="padding-bottom: 7.5px; font-size: 12px; line-height: 1.25;">
-            <span style="font-weight: bold;">03/2020 - Now: University of Zurich and ETH Zurich</span>, Zurich, Switzerland<br>
-            Ph.D. in Biomolecular Structure and Mechanism<br>
-            Supervisor: <a href="http://www.biochem-caflisch.uzh.ch/AmedeoCaflisch/1" class="href_style" target="_blank">Prof. Amedeo Caflisch</a>, <a class="href_style" target="_blank" href="http://www.biochem-caflisch.uzh.ch/members/Vitalis/Andreas/87">Dr. Andreas Vitalis</a>
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">FAIR simulation data</span>
+            <span class="field-teaser">Simulation metadata should outlive the trajectories!</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            A format only helps if the rest of the field reads it. I work with the
+            <a href="https://mddbr.eu">MDDB</a> consortium and with developers of other MD software —
+            NAMD, VMD, ViaMD — on standards that hold across tools rather than inside one of them.
           </p>
-          <p style="padding-bottom: 7.5px; font-size: 12px; line-height: 1.25;">
-            <span style="font-weight: bold;">09/2018 - 11/2019: University of Manchester</span>, Manchester, UK<br>
-            M.Phil. in Pharmacy and Pharmaceutical Sciences<br>
-            Supervisor: <a href="https://research.manchester.ac.uk/en/persons/richard.bryce" style="color: black" target="_blank">Dr. Richard Bryce</a>
-
+          <p>
+            Alongside that, co-development of the
+            <a href="https://github.com/CPCLab/molsim-ontology">MOLSIM</a> ontology gives the domain a
+            shared vocabulary, and earlier work set out a FAIR-compliant way to manage simulation
+            trajectories
+            (<a href="https://doi.org/10.1021/acs.jcim.4c01301"><em>J. Chem. Inf. Model.</em> 2025</a>).
           </p>
-          <p style="padding-bottom: 7.5px; font-size: 12px; line-height: 1.25;">
-            <span style="font-weight: bold;">09/2014 - 09/2018: Shandong Academy of Medical Sciences and University of Jinan</span>, Jinan, China<br>
-            B.Eng. in Pharmaceutical Engineering<br>
-            Supervisor: Dr. Jingyong Sun
+        </div>
+      </details>
+
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Dynamic feature extraction</span>
+            <span class="field-teaser">To move, or not to move, that is the question!</span>
+            <!-- Featurising an ensemble of trajectories, not a single frozen pose. -->
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Structure-based affinity prediction usually starts from one static pose, which throws away
+            exactly what the simulation was run to capture. <a href="https://github.com/miemiemmmm/Nearl">Nearl</a>
+            instead turns an ensemble of trajectories into voxel-based descriptors of the binding pocket.
           </p>
-
-          <p style="padding-bottom: 20px; padding-top: 20px; "><a href="https://github.com/miemiemmmm" target="_blank" style="color:black !important;">Github</a> |
-            <a href="https://www.linkedin.com/in/yang-zhang-947953172" target="_blank" style="color:black !important;">LinkedIn</a> |
-            <a href="https://raw.githubusercontent.com/miemiemmmm/miemiemmmm.github.io/main/Yang_CV_2023.pdf" target="_blank" style="color:black !important;">CV</a> |
-            <a href="mailto:y.zhang@bioc.uzh.ch" target="_blank" style="color:black !important;">E-Mail</a> |
-            <a href="https://orcid.org/0000-0003-0801-8064" target="_blank" style="color:black !important;">ORCID</a>
+          <p>
+            The pocket is decomposed into smaller “molecule blocks”, each featurised on its own, so a
+            feature computed from one trajectory can be reused when the same local configuration turns
+            up in a different structure
+            (<a href="https://doi.org/10.1093/bioinformatics/btaf321"><em>Bioinformatics</em> 2025</a>).
+            <a class="jump" href="#structure">See it in 3D ↓</a>
           </p>
+          <figure class="fig">
+            <img src="figures/Overall_workflow.jpg" alt="Information flow from molecular dynamics trajectories to stored features" loading="lazy">
+            <figcaption>Information flow of trajectory features and the sub-systems that produce them.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="figures/Trajectory_decomposition.jpg" alt="Automated pipeline decomposing a trajectory into molecule blocks" loading="lazy">
+            <figcaption>Automated pipeline for trajectory decomposition into reusable molecule blocks.</figcaption>
+          </figure>
+        </div>
+      </details>
 
-          <img id="welcome_bgimage" src="Images/BG_IMAGE.png" style="position: absolute; top:10px; right:-300px; opacity:0.25; transform: rotate(-30deg); filter: blur(2px); height: 700px; width: auto; z-index: -1;">
-        </section>
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Drug discovery platform</span>
+            <span class="field-teaser">Browser Is All You Need!</span>
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Running a screening campaign normally means stitching together system preparation, a
+            scheduler, storage and half a dozen analysis scripts.
+            <a href="https://acgui.bioc.uzh.ch/acgui/">ACGui</a> closes that loop in one browser-based
+            platform: set the system up, dispatch it to HPC, keep the trajectories, then play them back
+            and analyse them in place.
+          </p>
+          <p>
+            The automated system-preparation workflow reaches a success rate above 80%, which is what
+            makes running simulations in batch realistic rather than a per-system chore.
+          </p>
+          <figure class="fig">
+            <img src="figures/MD_workflow_2.png" alt="Batch molecular dynamics simulation dispatched from the ACGui platform" loading="lazy">
+            <figcaption>Batch MD simulation set up and dispatched through ACGui.</figcaption>
+          </figure>
+        </div>
+      </details>
 
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Flexible 3D pose recognition</span>
+            <span class="field-teaser">Topology helped you a lot!</span>
+            <!-- How well do ML models recognise a constantly moving molecule? -->
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Standard 3D recognition benchmarks separate their classes by basic shape — a chair does not
+            look like a lamp. Molecular fragments do not work that way: every member of a class shares
+            one fixed covalent topology, neighbouring classes can differ by a single atom, and the only
+            variation inside a class is conformation. A model that scores well here has to abstract
+            shape rather than memorise it.
+          </p>
+          <p>
+            <a href="https://github.com/miemiemmmm/FEater">FEater</a> turns that into a labelled
+            classification task. Two datasets are extracted from PDBBind: <strong>FEater-Single</strong>
+            (20 classes, one per standard amino acid, ~8.8 M fragments) and <strong>FEater-Dual</strong>
+            (400 classes, every two-residue combination, ~8.7 M stretches). Each fragment comes in four
+            representations of the same geometry — atomic coordinates, molecular surface vertices,
+            32<sup>3</sup> voxels, and 2D Hilbert-curve images — and the train/test split is blocked by
+            conformational clustering, so the test set is not a set of near-duplicates of the training set.
+          </p>
+          <p>
+            Across PointNet, PointNet++, DGCNN, PAConv, VoxNet, ResNet, ConvNeXt, Swin Transformer and
+            ViT, the representation decided the outcome more than the architecture did. On the 400-class
+            task at equal sample size, a ResNet reading Hilbert-curve embeddings of voxel data reached
+            97.1% accuracy while PointNet on raw coordinates reached 34.0% — and the far larger
+            transformer models did not beat that small ResNet. Models trained only on static
+            experimental structures then held comparable accuracy on conformations sampled from MD
+            trajectories, which is what makes augmenting a data-sparse discovery workflow with simulated
+            ensembles worth the effort
+            (<a href="https://doi.org/10.1016/j.patter.2024.101147"><em>Patterns</em> 2025</a>).
+          </p>
+          <figure class="fig">
+            <img src="figures/Example_3D_CNN.png" alt="Voxelised features entering a 3D convolutional neural network" loading="lazy">
+            <figcaption>Dynamic features become an additional channel for 3D geometric deep learning.</figcaption>
+          </figure>
+        </div>
+      </details>
 
-        <section data-state="slide_KeyChildModule">
-          <p class="slide-title">Key components for dynamic features extraction and training</p>
-          <div class="slide_content_style1">
-            <p class="slide_item_style1"><span style="font-weight: bold">Training material:</span> Trajectories of complexes selected from PDBBind </p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Trajectory loader:</span> Automation of trajectory array</p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Molecule-block generator:</span> Identification of sub-block patterns</p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Featurizer:</span> Transformation of raw trajectories into feature vectors</p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Input structure processor:</span> Feature retrieval and pocket reassembly</p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Database depositor:</span> Feature storage, retrieval and comparison</p>
-            <p class="slide_item_style1" style="padding-left: 40px"><span style="font-weight: bold">Temporary solution:</span> HDF (Hierarchical Data Format) file</p>
-            <p class="slide_item_style1"><span style="font-weight: bold">Neural network:</span> Prediction of the binding affinity</p>
-          </div>
-          <div class="image-style1">
-            <figure class="gallery-item gallery-item_style2" style="width: 100% !important;">
-              <img id="img_childmodules" style="width: 100% !important; height: auto; margin-bottom: 50px; ">
-              <figcaption class="content_subtitle" for="img_childmodules">Fig1. Information flow of trajectory features and the organization of corresponding sub-systems</figcaption>
-            </figure>
-          </div>
-        </section>
+    </div>
+  </div>
+</section>
 
-        <section data-state="slide_PrincipleHypothesis">
-          <p class="slide-title">Principle hypothesis and objective</p>
-          <div class="slide_content_style1">
-            <p class="slide_item_style1">1. Ligand binding is primarily determined by local atomic configurations</p>
-            <p class="slide_item_style1">2. Reduce the complexity of the binding pocket by decomposing it into smaller "molecule blocks"</p>
-            <p class="slide_item_style1">3. Static atomic configurations are mapped to dynamic behavior</p>
-            <p class="slide_item_style1">4. This map enables predictions for static configurations via the detour of predicting dynamic features</p>
-            <p class="content_subtitle"><span class="highlight_style1" style="line-height: 40px">Objective: </span><br><span class="slide_item_style1" style="margin-bottom: 10px">Develop a framework to preprocess molecular dynamics trajectories and prepare input data for voxel-based binding affinity prediction.</span><br> </p>
-          </div>
+<section id="structure">
+  <div class="wrap">
+    <h2>A binding pocket, decomposed</h2>
+    <p class="section-note">
+      One pocket, cut into its molecule blocks. Drag to rotate, hold Ctrl (⌘ on macOS) and scroll
+      to zoom.
+    </p>
 
-          <div style="position: absolute; top:20%; left:55%; width:450px !important; height: 450px !important;">
-              <div id="slide_RefPDBAndBox" style="width: 100%; height: 100%; "></div>
-              <p class="content_subtitle" style="font-size: 12px"><span style="font-weight: bold;">Stage1:</span> Protein(gray cartoon); ligand and pocket(green sticks), bounding box(light green cuboid), grid points(red dots) and molecule blocks (purple cuboids)</p>
-          </div>
-
-        </section>
-
-        <section data-state="slide_PackageArchetecture">
-          <p class="slide-title">Feature database construction </p>
-          <!--Attach the representation of the Package Archetecture-->
-          <div class="gallery" style="top:30% !important;">
-            <figure class="gallery-item PackageArchetecture image-gray">
-              <img id="PackageArchetecture_fig1" style="height: 200px !important; " src="">
-              <figcaption for="PackageArchetecture_fig1">Fig1: Batch MD simulation using the ACGui</figcaption>
-            </figure>
-            <figure class="gallery-item PackageArchetecture image-gray">
-              <img id="PackageArchetecture_fig2">
-              <figcaption for="PackageArchetecture_fig2">Fig2: Automated pipeline for trajectory decomposition</figcaption>
-            </figure>
-            <figure class="gallery-item PackageArchetecture image-gray">
-              <img id="PackageArchetecture_fig3">
-              <figcaption for="PackageArchetecture_fig3">Fig3: Feature generation, representation, and storage</figcaption>
-            </figure>
-
-          </div>
-        </section>
-
-        <section data-state="slide_PackageArchetecture2">
-          <p class="slide-title">Decomposing binding pockets and predicting affinity </p>
-          <div class="gallery" style="top:30% !important;">
-            <figure class="gallery-item PackageArchetecture image-gray" >
-              <img id="PackageArchetecture_fig4">
-              <figcaption for="PackageArchetecture_fig4">Fig1: An example binding pose to predict</figcaption>
-            </figure>
-            <figure class="gallery-item PackageArchetecture image-gray" >
-              <img id="PackageArchetecture_fig5">
-              <figcaption for="PackageArchetecture_fig5">Fig2: Binding pocket extraction, "molecule block" retrieval and feature reassembly</figcaption>
-            </figure>
-            <figure class="gallery-item PackageArchetecture image-gray gallery-item_style4" style="height: auto !important; width: 30% !important; ">
-              <img id="PackageArchetecture_fig6" style="height: 100% !important; width: 100%" >
-              <figcaption>Fig3: Add additional channel in the 3D-based geometric machine learning methods </figcaption>
-            </figure>
-          </div>
-        </section>
-
+    <div class="viewer-shell">
+      <div id="viewer" data-structure="data/C209CsDJQucZ_Protein2.pdb">
+        <p class="viewer-fallback" id="viewer-fallback">Loading structure…</p>
+      </div>
+      <div class="viewer-legend">
+        <span><i class="swatch" style="background:#9aa3a0"></i> protein</span>
+        <span><i class="swatch" style="background:#3fa37f"></i> ligand &amp; pocket residues</span>
+        <span><i class="swatch" style="background:#adf7d1"></i> bounding box</span>
+        <span><i class="swatch" style="background:#8971d0"></i> molecule blocks</span>
       </div>
     </div>
   </div>
+</section>
 
-  <!--
-  TODO list before pushing:
-  1. Change the kjera importing path to the CDN
-  2. Change the public token if needed.
-   -->
+<section id="publications">
+  <div class="wrap">
+    <h2>Selected publications</h2>
 
-  <script type="module">
-    function gettok(){
-      let starting = atob("Z2l0aHViX3BhdF8xMUFOVzZRVlkwd2xpS3hHTWFQc21jXzBNaFFnQ2tDZnV6TQ==");
-      let second = atob("TlVPRVN0M0FONjFlc2ZrNUdtZk1jdEJ4ZUZPVGtOMENaS0JYUTdIdWVSNWxIcFk=");
-      return starting + second;
-    }
-    var repo_url = 'https://api.github.com/repos/miemiemmmm/miemiemmmm.github.io/contents/';
-    import { Octokit, App } from "https://esm.sh/octokit";
-    import * as kjera from 'https://cdn.jsdelivr.net/gh/miemiemmmm/miemiemmmm.github.io@main/modules.js';
-    // import * as kjera from "./modules.js"    // For local development
-    // kjera.test_function();                   // For local development
-    kjera.set_repo(repo_url);
-    kjera.set_token(gettok());
+    <ol class="pubs">
+      <li>
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.1093/bioinformatics/btaf321">Nearl: extracting dynamic features from molecular dynamics trajectories for machine learning tasks</a></p>
+          <p class="pub-meta">Zhang, Y. <em>et al.</em> — <em>Bioinformatics</em></p>
+        </div>
+      </li>
+      <li>
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.patter.2024.101147">Benchmarking the robustness of the correct identification of flexible 3D objects using common machine learning models</a></p>
+          <p class="pub-meta">Zhang, Y. <em>et al.</em> — <em>Patterns</em></p>
+        </div>
+      </li>
+      <li>
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.1002/jcc.70074">Parallelized Tools for the Preparation and Curation of Large Libraries for Virtual Screening</a></p>
+          <p class="pub-meta">Vitalis, A. <em>et al.</em> (incl. Zhang, Y.) — <em>Journal of Computational Chemistry</em></p>
+        </div>
+      </li>
+      <li>
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.1021/acs.jcim.4c01301">A FAIR-Compliant Management Solution for Molecular Simulation Trajectories</a></p>
+          <p class="pub-meta">Vitalis, A. <em>et al.</em> (incl. Zhang, Y.) — <em>Journal of Chemical Information and Modeling</em></p>
+        </div>
+      </li>
+      <li>
+        <div class="pub-year">2024</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.5167/uzh-264338">Combining Molecular Dynamics and Machine Learning for Drug Design</a><span class="badge">thesis</span></p>
+          <p class="pub-meta">Doctoral thesis, University of Zurich</p>
+        </div>
+      </li>
+      <li>
+        <div class="pub-year">2026</div>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.6084/m9.figshare.31267465">H5MD Trajectory Format in GROMACS: Integrating Metadata with Molecular Simulation Data</a><span class="badge">poster</span></p>
+          <p class="pub-meta">Zhang, Y. <em>et al.</em></p>
+        </div>
+      </li>
+    </ol>
 
-    kjera.setupImage("Images/UZH_LOGO_WEB.png")
+    <p class="section-note">Full publication list on <a href="https://orcid.org/0000-0003-0801-8064">ORCID</a>.</p>
+  </div>
+</section>
 
-    const PRELOAD_FIGURES = true;
-    const FIGURES = {};
-    if (PRELOAD_FIGURES == true){
-      // NOTE: Add await to synchronously load the images; remove the await to load asynchronously
-      kjera.getAllImages(FIGURES);
-    }
-    const IMG_LOGO = "Images/UZH_LOGO_WEB.png";
-    const IMG_BG = "Images/BG_IMAGE.png";
-    const IMG_PORT = "Images/biochemgroup_zuerich_2022_yang.jpeg"
-    await kjera.setupImage("welcome_bgimage", repo_url + IMG_BG);
-    await kjera.setupImage("personal_photo", repo_url + IMG_PORT);
-    var univ_logo;
+<section id="software">
+  <div class="wrap">
+    <h2>Software</h2>
+    <p class="section-note">Tools I wrote, co-developed, or contribute to.</p>
 
-    (async ()=>{
-      // Set university logo
-      univ_logo = await kjera.getImageb64(repo_url + IMG_LOGO);
-      var imgdiv = document.createElement('img');
-      imgdiv.classList.add('uzh_logo');
-      imgdiv.src = univ_logo;
-      document.body.appendChild(imgdiv);
-      var b64_chapter_break = await kjera.getImageb64(repo_url + IMG_BG);
-    })();
+    <div class="repo-grid">
+      <a class="repo" href="https://gitlab.com/gromacs/gromacs">
+        <h3>GROMACS</h3>
+        <p>Molecular dynamics engine. I work on trajectory I/O — H5MD support and its metadata — and on the new Python API.</p>
+        <span class="repo-meta">C++ / Python · core developer</span>
+      </a>
+      <a class="repo" href="https://gitlab.com/gromacs/h5md-biophysics">
+        <h3>h5md-biophysics</h3>
+        <p>Metadata schema extending H5MD: topology, force field and MD parameters, selections and observables in one self-describing HDF5 archive.</p>
+        <span class="repo-meta">H5MD · maintainer</span>
+      </a>
+      <a class="repo" href="https://github.com/miemiemmmm/Nearl">
+        <h3>Nearl</h3>
+        <p>Automated pipeline that extracts dynamic features from large ensembles of MD trajectories.</p>
+        <span class="repo-meta">Python / C++ / CUDA · creator</span>
+      </a>
+      <a class="repo" href="https://github.com/miemiemmmm/FEater">
+        <h3>FEater</h3>
+        <p>Molecular fragment dataset for benchmarking the robustness of 3D flexible object recognition.</p>
+        <span class="repo-meta">Python · HDF5 · creator</span>
+      </a>
+      <a class="repo" href="https://acgui.bioc.uzh.ch/acgui/">
+        <h3>ACGui</h3>
+        <p>Browser-based drug discovery platform: set up, run, store and analyse simulations from one interface.</p>
+        <span class="repo-meta">web platform · co-developer</span>
+      </a>
+      <a class="repo" href="https://gitlab.com/CaflischLab/paraLig">
+        <h3>ParaLig</h3>
+        <p>Parallelised preparation and curation of large compound libraries for virtual screening.</p>
+        <span class="repo-meta">Python · co-developer</span>
+      </a>
+      <a class="repo" href="https://github.com/miemiemmmm/Bena">
+        <h3>Bena</h3>
+        <p>Deploy benchmarking campaigns on HPC clusters without hand-rolling job scripts.</p>
+        <span class="repo-meta">benchmark · creator</span>
+      </a>
+      <a class="repo" href="https://github.com/miemiemmmm/Kjera">
+        <h3>Kjera</h3>
+        <p>Reveal.js template for interactive scientific slides with embedded 3D molecular views.</p>
+        <span class="repo-meta">presentations · creator</span>
+      </a>
+      <a class="repo" href="https://github.com/CPCLab/molsim-ontology">
+        <h3>MOLSIM</h3>
+        <p>Interoperable ontology for representing biomolecular simulation, co-developed with the MD data community.</p>
+        <span class="repo-meta">ontology </span>
+      </a>
+    </div>
+  </div>
+</section>
 
+<section id="background">
+  <div class="wrap">
+    <h2>Background</h2>
 
-    Reveal.initialize({
-      // Set the theme to white
-      theme: 'white',
-      // Set the transition style to slide
-      transition: 'convex',
-      backgroundTransition: "zoom"
-    });
+    <ul class="timeline">
+      <li>
+        <div class="tl-when">03/2025 — now</div>
+        <div>
+          <p class="tl-what">Postdoctoral Researcher &amp; GROMACS Core Developer</p>
+          <p class="tl-where">
+            KTH Royal Institute of Technology &amp; SciLifeLab, Sweden —
+            with <a href="https://www.kth.se/profile/erik">Prof. Erik Lindahl</a>
+            <!-- and <a href="https://www.su.se/english/profiles/r/rhowa">Dr. Rebecca Howard</a> -->
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when">04/2020 — 02/2025</div>
+        <div>
+          <p class="tl-what">Doctoral Researcher — PhD in Biomolecular Structure and Mechanism</p>
+          <p class="tl-where">
+            University of Zurich, Switzerland —
+            with <a href="https://www.bioc.uzh.ch/en/research/research-groups/caflisch.html">Prof. Amedeo Caflisch</a>
+            and <a href="https://www.bioc.uzh.ch/de/studium/dozierende/vitalis.html">Dr. Andreas Vitalis</a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when">09/2018 — 11/2019</div>
+        <div>
+          <p class="tl-what">MPhil in Pharmacy and Pharmaceutical Sciences</p>
+          <p class="tl-where">
+            University of Manchester, UK —
+            with <a href="https://research.manchester.ac.uk/en/persons/richard.bryce">Dr. Richard Bryce</a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when">09/2014 — 09/2018</div>
+        <div>
+          <p class="tl-what">BEng in Pharmaceutical Engineering</p>
+          <p class="tl-where">Shandong Academy of Medical Sciences &amp; University of Jinan, China</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    Reveal.addEventListener('slidechanged', function(event) {
-      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_KeyChildModule') {
-        const image1 = "Overall_workflow.jpg"
-        if (Object.keys(FIGURES).includes(image1)){
-          kjera.setupImage("img_childmodules", FIGURES[image1]);
-        } else {
-          kjera.setupImage("img_childmodules", repo_url + "Images/"+image1);
-        }
-      }
-    })
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="section-note">Happy to talk about trajectory formats, featurisation, or anything that makes simulation data more reusable.</p>
+    <p class="reveal-mail" id="mail-reveal" hidden>
+      <button type="button" id="mail-button">Show email address</button>
+    </p>
 
-    Reveal.addEventListener('slidechanged', function(event) {
-      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PrincipleHypothesis') {
-        if ( !window.hasOwnProperty("voxel_box_set") ) {
-          kjera.add3DMolObject("slide_RefPDBAndBox", repo_url+"data/C209CsDJQucZ_Protein2.pdb")
-            .then(viewer=>{
-              // Set styles for the protein structure
-              viewer.setStyle({}, { cartoon:{color: "gray"} } );
-              var ligandSelection = {resn: 'LIG',  byres:true, expand:5};
-              viewer.setStyle(ligandSelection, {stick: {colorscheme:"greenCarbon"}, cartoon: {}});
-              // Add Grid points
-              const center = [22.0947246 , 36.49708133, 21.81810805];
-              const ls = [16, 16, 16];
-              const dims = [16, 16, 16];
-              kjera.renderGridPoints(viewer, center, ls, dims);
-              viewer.addBox({center:{x:center[0], y:center[1] ,z:center[2]},
-                dimensions: {w:ls[0], h:ls[1], d:ls[2]},
-                color:'#adf7d1',
-                opacity:0.65
-              })
-              const centers = [
-                [34.88775634765625, 38.64504623413086, 18.944740295410156], [30.713611602783203, 42.00475311279297, 19.096406936645508], [28.294567108154297, 44.30536651611328, 17.057537078857422],
-                [27.101287841796875, 45.99188232421875, 21.745433807373047], [21.747516632080078, 46.85906219482422, 26.61472511291504], [19.334928512573242, 44.54450225830078, 35.28935623168945],
-                [16.974706649780273, 41.76900100708008, 31.347522735595703], [17.396854400634766, 37.726806640625, 27.266767501831055]
-              ]
-              const block_ls = [6,6,6]
-              for (var i=0; i < centers.length; i++){
-                viewer.addBox({center:{x:centers[i][0], y:centers[i][1] ,z:centers[i][2]},
-                  dimensions: {w:block_ls[0], h:block_ls[1], d:block_ls[2]},
-                  color:'#8971d0',
-                  opacity:1,
-                })
-                viewer.addBox({center:{x:centers[i][0], y:centers[i][1] ,z:centers[i][2]},
-                  dimensions: {w:block_ls[0]+0.5, h:block_ls[1]+0.5, d:block_ls[2]+0.5},
-                  color:'black',
-                  opacity:0.6
-                })
-              }
-              viewer.rotate(195, {x: 0, y: 1, z: 0});
-              viewer.render();
+    <p class="contact-mail" id="mail-out" hidden></p>
 
-              window.voxel_box_set = true;
-              window.viewer_RefPDBAndBox = viewer;
-              kjera.resetCanvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
-            })
-        } else {
-          console.log(window.viewer_RefPDBAndBox)
-          window.viewer_RefPDBAndBox.render()
-          kjera.resetCanvas("slide_RefPDBAndBox", window.viewer_RefPDBAndBox)
-        }
-      }
-    })
+    <noscript>
+      <p class="muted">My email address is shown with JavaScript enabled — otherwise reach me
+      through any of the links below.</p>
+    </noscript>
+    <div class="links">
+      <a class="btn" href="https://github.com/miemiemmmm">GitHub</a>
+      <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
+      <a class="btn" href="https://orcid.org/0000-0003-0801-8064">ORCID</a>
+      <a class="btn" href="https://www.linkedin.com/in/yang-zhang-947953172/">LinkedIn</a>
+      <a class="btn" href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>
+    </div>
+  </div>
+</section>
 
+</main>
 
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Yang Zhang</span>
+  </div>
+</footer>
 
-    Reveal.addEventListener('slidechanged', function(event) {
-      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture') {
-        const image1 = "MD_workflow_2.png"
-        const image2 = "Trajectory_decomposition.jpg"
-        const image3 = "tmp05dodkbp_final_feat.png"
-        if (Object.keys(FIGURES).includes(image1)){
-          kjera.setupImage("PackageArchetecture_fig1", FIGURES[image1]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig1", repo_url + "Images/"+image1);
-        }
-        if (Object.keys(FIGURES).includes(image2)){
-          kjera.setupImage("PackageArchetecture_fig2", FIGURES[image2]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig2", repo_url + "Images/"+image2);
-        }
-        if (Object.keys(FIGURES).includes(image3)){
-          kjera.setupImage("PackageArchetecture_fig3", FIGURES[image3]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig3", repo_url + "Images/"+image3);
-        }
-
-        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-        $(".gallery-item").hover(
-          function() {
-            if ($(this).hasClass('PackageArchetecture')){
-              $(this).removeClass('image-gray');
-            }
-          },
-          function() {
-            if ($(this).hasClass('PackageArchetecture')) {
-              $(this).addClass('image-gray');
-            }
-          }
-        );
-      }
-    })
-
-    Reveal.addEventListener('slidechanged', function(event) {
-      if (event.currentSlide && event.currentSlide.getAttribute('data-state') == 'slide_PackageArchetecture2') {
-        let image1 = "Image_pocket.png"
-        let image2 = "MBlock_retrieval.jpg"
-        let image3 = "Example_3D_CNN.png"
-        if (Object.keys(FIGURES).includes(image1)){
-          kjera.setupImage("PackageArchetecture_fig4", FIGURES[image1]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig4", repo_url + "Images/"+image1);
-        }
-        if (Object.keys(FIGURES).includes(image2)){
-          kjera.setupImage("PackageArchetecture_fig5", FIGURES[image2]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig5", repo_url + "Images/"+image2);
-        }
-        if (Object.keys(FIGURES).includes(image3)){
-          kjera.setupImage("PackageArchetecture_fig6", FIGURES[image3]);
-        } else {
-          kjera.setupImage("PackageArchetecture_fig6", repo_url + "Images/"+image3);
-        }
-        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-        $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-        $(".gallery-item").hover(
-          function() {
-            if ($(this).hasClass('PackageArchetecture')){
-              $(this).removeClass('image-gray');
-            }
-          },
-          function() {
-            if ($(this).hasClass('PackageArchetecture')) {
-              $(this).addClass('image-gray');
-            }
-          }
-        );
-      }
-    })
-
-
-
-    function update_page_number(event, pageNumberID){
-      if (event){
-        var pageNumber = event.indexh + 1;
-      } else {
-        var pageNumber = 1;
-      }
-      var totalPages = Reveal.getTotalSlides();
-      var pageString = pageNumber + '/' + totalPages;
-      var pageNumberElement = document.querySelector( pageNumberID );
-      if ( pageNumberElement ) {
-        pageNumberElement.innerHTML = pageString;
-        pageNumberElement.style.zIndex = 0
-      } else {
-        var pagediv = document.createElement( 'div' );
-        pagediv.classList.add( 'page-number' );
-        pagediv.innerHTML = pageString;
-        pagediv.style.zIndex = 0
-        document.body.appendChild( pagediv );
-      }
-    }
-
-    kjera.update_page_number(false, '.page-number' );
-
-    Reveal.addEventListener( 'slidechanged', function( event ) {
-      // Add the UZH logo
-      var uzhLogoElement = document.querySelector( '.uzh_logo' );
-      if ( uzhLogoElement ) {
-        uzhLogoElement.src = univ_logo;
-      } else {
-        var imgdiv = document.createElement( 'img' );
-        imgdiv.classList.add( 'uzh_logo' );
-        imgdiv.src = univ_logo;
-        document.body.appendChild( imgdiv );
-      }
-
-      kjera.update_page_number(event, '.page-number' );
-
-
-      // var symbol_fig = document.querySelector( '.symbol_fig' );
-      // if ( symbol_fig ) {
-      // 	symbol_fig.src = box2_trans
-      // } else {
-      // 	var symboldiv = document.createElement( 'img' );
-      // 	symboldiv.classList.add( 'symbol_fig' );
-      // 	symboldiv.src = box2_trans;
-      // 	symboldiv.style.zIndex = 0
-      // 	document.body.appendChild(symboldiv)
-      // }
-
-      const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      // console.log("ViewPort Width:", viewportWidth, "/ Height", viewportHeight);
-      // $("#slide_container").css({"width": String(viewportWidth*0.45)+"px"})
-
-      // setup break slide
-      // var found_chapterbreak = event.currentSlide.querySelector( '.chapter_break_container' );
-      // var found_chapterbreakimg = event.currentSlide.querySelector( '.chapter_break_container img' );
-      // if ( found_chapterbreak && found_chapterbreakimg.src.slice(0,4) !== "data") {
-      // 	// found_chapterbreakimg.src = Snap_bfl1_bh3;
-      // 	found_chapterbreakimg.src = tmpo_gbx3oc_final_conf
-      // 	found_chapterbreakimg.style.zIndex = -10;
-      // 	found_chapterbreakimg.style.width = '75%';
-      // 	found_chapterbreakimg.style.position = "absolute"
-      // 	found_chapterbreakimg.style.transform = 'rotate(-30deg)';
-      // 	found_chapterbreakimg.style.filter = "blur(5px)";
-      // 	found_chapterbreakimg.style.bottom = 0;
-      // 	found_chapterbreakimg.style.right = "-30%";
-      // 	found_chapterbreakimg.style.opacity = 0.2;
-      // 	var chapterbreak = document.querySelector( '.chapter_break')
-      // 	chapterbreak.style.zIndex = 999
-      // }
-    });
-
-    // Move the laser pointer with the mouse
-    // Laser pointer function for the slides
-    const laserPointer = document.querySelector('.laser-pointer');
-    var usingLaser = false;
-    document.addEventListener('keydown', (event) => {
-      if (event.key == "1" && !usingLaser){
-        laserPointer.style.opacity = 1;
-        usingLaser=true
-        $('body').css('cursor', 'none');
-        laserPointer.style.left = -100+"px";
-        laserPointer.style.top = -100+"px";
-      } else {
-        laserPointer.style.opacity = 0;
-        usingLaser=false
-        $('body').css('cursor', 'default');
-      }
-    });
-    document.addEventListener('mousemove', (event) => {
-      if (usingLaser) {
-        laserPointer.style.left = event.clientX - laserPointer.clientWidth / 2 + 'px';
-        laserPointer.style.top = event.clientY - laserPointer.clientHeight / 2 + 'px';
-      }
-    });
-
-    $(".gallery-item").hover(
-      function() {
-        $(this).css({"z-index": 999})
-      },
-      function() {
-        $(this).css({"z-index": 0})
-      }
-    );
-  </script>
+<script src="https://3Dmol.org/build/3Dmol-min.js" defer></script>
+<script src="index.js" defer></script>
 </body>
 </html>

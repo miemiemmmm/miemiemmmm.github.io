@@ -62,7 +62,7 @@
     <a class="brand" href="#top">🐑 <span class="brand-full">Yang Zhang</span></a>
     <ul>
       <li><a href="#research">Research</a></li>
-      <li><a href="#structure">Structure</a></li>
+      <li><a href="#structure">Binding pocket</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#software">Software</a></li>
       <li><a href="#background">Background</a></li>
@@ -74,24 +74,29 @@
 <header class="hero" id="top">
   <img class="hero-bg" src="figures/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy">
   <div class="wrap">
-    <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
-    <h1>Yang Zhang<span class="cn">张杨</span></h1>
-    <p class="role">
-      Postdoctoral researcher &amp; GROMACS core developer at KTH Royal Institute of Technology &amp; SciLifeLab.
-    </p>
-    <p class="lede">
-      I build the computational machinery that makes molecular dynamics data reusable — trajectory
-      formats that carry their own metadata, feature-extraction pipelines that feed machine learning,
-      and benchmarks that test how well those models really recognise flexible 3D molecules.
-    </p>
-    <div class="links">
-      <a class="btn primary" href="https://github.com/miemiemmmm">GitHub</a>
-      <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
-      <a class="btn" href="https://orcid.org/0000-0003-0801-8064">ORCID</a>
-      <a class="btn" href="https://www.linkedin.com/in/yang-zhang-947953172/">LinkedIn</a>
-      <a class="btn" href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>
-      <a class="btn" href="CV/Yang_CV_2023.pdf">CV (PDF)</a>
+    <div class="hero-text">
+      <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
+      <h1>Yang Zhang<span class="cn">张杨</span></h1>
+      <p class="role">
+        Postdoctoral researcher &amp; GROMACS core developer at KTH Royal Institute of Technology &amp; SciLifeLab.
+      </p>
+      <p class="lede">
+        I focus on integration of molecular dynamics simulation techiniques with machine learning for drug discovery. 
+        My work builds the computational machinery that makes  data reusable; 
+        develops algorithms to extract dynamic features;
+        and develops drug discovery platforms for computer-aided drug design.
+      </p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/miemiemmmm">GitHub</a>
+        <a class="btn" href="https://gitlab.com/credo_zhang">GitLab</a>
+        <a class="btn" href="https://orcid.org/0000-0003-0801-8064">ORCID</a>
+        <a class="btn" href="https://www.linkedin.com/in/yang-zhang-947953172/">LinkedIn</a>
+        <a class="btn" href="https://molecular.biophysics.se/members/yang-zhang/">Lindahl Lab</a>
+        <a class="btn" href="CV/Yang_CV_2023.pdf">CV (PDF)</a>
+      </div>
     </div>
+    <img class="hero-portrait" src="figures/biochemgroup_zuerich_2022_yang.jpeg"
+         alt="Portrait of Yang Zhang" width="176" height="220">
   </div>
 </header>
 
@@ -110,21 +115,21 @@
       <details class="field" name="research" open>
         <summary>
           <span class="field-head">
-            <span class="field-title">Trajectory formats &amp; metadata</span>
-            <span class="field-teaser">Making a trajectory file describe itself.</span>
+            <span class="field-title">Trajectory file format &amp; metadata schema</span>
+            <span class="field-teaser">Let trajectory files describe themselves!</span>
           </span>
         </summary>
         <div class="field-body">
           <p>
-            A trajectory on disk is just coordinates. Which force field produced it, which code
-            version, which thermostat — that context usually lives in a lab notebook, a directory
-            name, or someone's memory, and it is the first thing lost.
+            MD data is highly fragmented. Trajectory, topology, energy, MD parameters and force field are
+            loosely coupled with each other. Scientists often have to dive into the messy directory tree, scripts,
+            and lab notebooks to recall the simulation file and protocols. 
           </p>
           <p>
-            I lead the integration of metadata and provenance into the
-            <a href="https://h5md.nongnu.org/h5md.html">H5MD</a> format in
-            <a href="https://gitlab.com/gromacs/gromacs">GROMACS</a>, so that context travels inside
-            the file itself and a trajectory stays interpretable long after the run that produced it.
+            I lead the development and integration of 
+            <a href="https://gromacs.gitlab.io/h5md-biophysics/">"Biophysics" metadata schema</a> into the H5MD format
+            and provenance module in GROMACS, so that the trajectory files become self-consistent upon generation,
+            and could trace back to the simulation setup and parameters even years later.
           </p>
         </div>
       </details>
@@ -133,7 +138,7 @@
         <summary>
           <span class="field-head">
             <span class="field-title">FAIR simulation data</span>
-            <span class="field-teaser">Shared standards, so simulations outlive the project that ran them.</span>
+            <span class="field-teaser">Simulation metadata should outlive the trajectories!</span>
           </span>
         </summary>
         <div class="field-body">
@@ -156,7 +161,8 @@
         <summary>
           <span class="field-head">
             <span class="field-title">Dynamic feature extraction</span>
-            <span class="field-teaser">Featurising an ensemble of trajectories, not a single frozen pose.</span>
+            <span class="field-teaser">To move, or not to move, that is the question!</span>
+            <!-- Featurising an ensemble of trajectories, not a single frozen pose. -->
           </span>
         </summary>
         <div class="field-body">
@@ -170,6 +176,7 @@
             feature computed from one trajectory can be reused when the same local configuration turns
             up in a different structure
             (<a href="https://doi.org/10.1093/bioinformatics/btaf321"><em>Bioinformatics</em> 2025</a>).
+            <a class="jump" href="#structure">See it in 3D ↓</a>
           </p>
           <figure class="fig">
             <img src="figures/Overall_workflow.jpg" alt="Information flow from molecular dynamics trajectories to stored features" loading="lazy">
@@ -185,32 +192,8 @@
       <details class="field" name="research">
         <summary>
           <span class="field-head">
-            <span class="field-title">3D molecular recognition</span>
-            <span class="field-teaser">How well do ML models recognise a molecule that keeps moving?</span>
-          </span>
-        </summary>
-        <div class="field-body">
-          <p>
-            Benchmarks for 3D object recognition mostly use rigid objects. Molecules are not rigid, and
-            a model that scores well on a fixed conformer may be reading pose rather than identity.
-          </p>
-          <p>
-            <a href="https://github.com/miemiemmmm/FEater">FEater</a> is a molecular fragment dataset
-            built to test that honestly across CNN, GNN, PointNet- and Transformer-style architectures
-            (<a href="https://doi.org/10.1016/j.patter.2024.101147"><em>Patterns</em> 2025</a>).
-          </p>
-          <figure class="fig">
-            <img src="figures/Example_3D_CNN.png" alt="Voxelised features entering a 3D convolutional neural network" loading="lazy">
-            <figcaption>Dynamic features become an additional channel for 3D geometric deep learning.</figcaption>
-          </figure>
-        </div>
-      </details>
-
-      <details class="field" name="research">
-        <summary>
-          <span class="field-head">
             <span class="field-title">Drug discovery platform</span>
-            <span class="field-teaser">Set up, run, store and analyse a campaign without leaving the browser.</span>
+            <span class="field-teaser">Browser Is All You Need!</span>
           </span>
         </summary>
         <div class="field-body">
@@ -232,6 +215,49 @@
         </div>
       </details>
 
+      <details class="field" name="research">
+        <summary>
+          <span class="field-head">
+            <span class="field-title">Flexible 3D pose recognition</span>
+            <span class="field-teaser">Topology helped you a lot!</span>
+            <!-- How well do ML models recognise a constantly moving molecule? -->
+          </span>
+        </summary>
+        <div class="field-body">
+          <p>
+            Standard 3D recognition benchmarks separate their classes by basic shape — a chair does not
+            look like a lamp. Molecular fragments do not work that way: every member of a class shares
+            one fixed covalent topology, neighbouring classes can differ by a single atom, and the only
+            variation inside a class is conformation. A model that scores well here has to abstract
+            shape rather than memorise it.
+          </p>
+          <p>
+            <a href="https://github.com/miemiemmmm/FEater">FEater</a> turns that into a labelled
+            classification task. Two datasets are extracted from PDBBind: <strong>FEater-Single</strong>
+            (20 classes, one per standard amino acid, ~8.8 M fragments) and <strong>FEater-Dual</strong>
+            (400 classes, every two-residue combination, ~8.7 M stretches). Each fragment comes in four
+            representations of the same geometry — atomic coordinates, molecular surface vertices,
+            32<sup>3</sup> voxels, and 2D Hilbert-curve images — and the train/test split is blocked by
+            conformational clustering, so the test set is not a set of near-duplicates of the training set.
+          </p>
+          <p>
+            Across PointNet, PointNet++, DGCNN, PAConv, VoxNet, ResNet, ConvNeXt, Swin Transformer and
+            ViT, the representation decided the outcome more than the architecture did. On the 400-class
+            task at equal sample size, a ResNet reading Hilbert-curve embeddings of voxel data reached
+            97.1% accuracy while PointNet on raw coordinates reached 34.0% — and the far larger
+            transformer models did not beat that small ResNet. Models trained only on static
+            experimental structures then held comparable accuracy on conformations sampled from MD
+            trajectories, which is what makes augmenting a data-sparse discovery workflow with simulated
+            ensembles worth the effort
+            (<a href="https://doi.org/10.1016/j.patter.2024.101147"><em>Patterns</em> 2025</a>).
+          </p>
+          <figure class="fig">
+            <img src="figures/Example_3D_CNN.png" alt="Voxelised features entering a 3D convolutional neural network" loading="lazy">
+            <figcaption>Dynamic features become an additional channel for 3D geometric deep learning.</figcaption>
+          </figure>
+        </div>
+      </details>
+
     </div>
   </div>
 </section>
@@ -240,9 +266,8 @@
   <div class="wrap">
     <h2>A binding pocket, decomposed</h2>
     <p class="section-note">
-      The pocket is cut into a grid of smaller “molecule blocks”. Each block is featurised
-      independently, which lets features computed from one trajectory be reused in a different
-      structural context. Drag to rotate, hold Ctrl (⌘ on macOS) and scroll to zoom.
+      One pocket, cut into its molecule blocks. Drag to rotate, hold Ctrl (⌘ on macOS) and scroll
+      to zoom.
     </p>
 
     <div class="viewer-shell">
@@ -323,40 +348,45 @@
         <p>Molecular dynamics engine. I work on trajectory I/O — H5MD support and its metadata — and on the new Python API.</p>
         <span class="repo-meta">C++ / Python · core developer</span>
       </a>
+      <a class="repo" href="https://gitlab.com/gromacs/h5md-biophysics">
+        <h3>h5md-biophysics</h3>
+        <p>Metadata schema extending H5MD: topology, force field and MD parameters, selections and observables in one self-describing HDF5 archive.</p>
+        <span class="repo-meta">H5MD · maintainer</span>
+      </a>
       <a class="repo" href="https://github.com/miemiemmmm/Nearl">
         <h3>Nearl</h3>
         <p>Automated pipeline that extracts dynamic features from large ensembles of MD trajectories.</p>
-        <span class="repo-meta">Python · Bioinformatics 2025</span>
+        <span class="repo-meta">Python / C++ / CUDA · creator</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/FEater">
         <h3>FEater</h3>
         <p>Molecular fragment dataset for benchmarking the robustness of 3D flexible object recognition.</p>
-        <span class="repo-meta">Python · Patterns 2025</span>
+        <span class="repo-meta">Python · HDF5 · creator</span>
       </a>
       <a class="repo" href="https://acgui.bioc.uzh.ch/acgui/">
         <h3>ACGui</h3>
         <p>Browser-based drug discovery platform: set up, run, store and analyse simulations from one interface.</p>
-        <span class="repo-meta">web platform · UZH</span>
-      </a>
-      <a class="repo" href="https://github.com/CPCLab/molsim-ontology">
-        <h3>MOLSIM</h3>
-        <p>Interoperable ontology for representing biomolecular simulation, co-developed with the MD data community.</p>
-        <span class="repo-meta">ontology · co-developer</span>
+        <span class="repo-meta">web platform · co-developer</span>
       </a>
       <a class="repo" href="https://gitlab.com/CaflischLab/paraLig">
         <h3>ParaLig</h3>
         <p>Parallelised preparation and curation of large compound libraries for virtual screening.</p>
-        <span class="repo-meta">Python · J. Comput. Chem. 2025</span>
+        <span class="repo-meta">Python · co-developer</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/Bena">
         <h3>Bena</h3>
         <p>Deploy benchmarking campaigns on HPC clusters without hand-rolling job scripts.</p>
-        <span class="repo-meta">Python · HPC</span>
+        <span class="repo-meta">benchmark · creator</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/Kjera">
         <h3>Kjera</h3>
         <p>Reveal.js template for interactive scientific slides with embedded 3D molecular views.</p>
-        <span class="repo-meta">HTML · presentations</span>
+        <span class="repo-meta">presentations · creator</span>
+      </a>
+      <a class="repo" href="https://github.com/CPCLab/molsim-ontology">
+        <h3>MOLSIM</h3>
+        <p>Interoperable ontology for representing biomolecular simulation, co-developed with the MD data community.</p>
+        <span class="repo-meta">ontology </span>
       </a>
     </div>
   </div>
@@ -374,6 +404,7 @@
           <p class="tl-where">
             KTH Royal Institute of Technology &amp; SciLifeLab, Sweden —
             with <a href="https://www.kth.se/profile/erik">Prof. Erik Lindahl</a>
+            <!-- and <a href="https://www.su.se/english/profiles/r/rhowa">Dr. Rebecca Howard</a> -->
           </p>
         </div>
       </li>

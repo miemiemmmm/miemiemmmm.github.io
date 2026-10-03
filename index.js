@@ -13,7 +13,7 @@
 
 (function scrollReveal() {
   var groups = [
-    ".hero .wrap > *",
+    ".hero-text > *",
     "section h2",
     "section .section-note",
     ".fields > details",

@@ -810,11 +810,32 @@ var introDone = (function introSequence() {
         );
 
         viewer.removeAllShapes();
+        // The bounding box: a faint fill for the volume, and its twelve edges
+        // drawn as thin cylinders so it reads clearly against either theme
+        // (WebGL lines are always one pixel wide, too faint to see).
+        var boxColor = cssVar("--mol-box");
         viewer.addBox({
           center: { x: BOX_CENTER[0], y: BOX_CENTER[1], z: BOX_CENTER[2] },
           dimensions: { w: BOX_SIZE, h: BOX_SIZE, d: BOX_SIZE },
-          color: cssVar("--mol-box"),
-          opacity: 0.16
+          color: boxColor,
+          opacity: 0.22
+        });
+        var half = BOX_SIZE / 2, corners = [];
+        [-half, half].forEach(function (dx) {
+          [-half, half].forEach(function (dy) {
+            [-half, half].forEach(function (dz) {
+              corners.push({ x: BOX_CENTER[0] + dx, y: BOX_CENTER[1] + dy, z: BOX_CENTER[2] + dz });
+            });
+          });
+        });
+        corners.forEach(function (a, i) {
+          corners.forEach(function (b, j) {
+            // An edge joins two corners that differ along exactly one axis.
+            var differ = (a.x !== b.x) + (a.y !== b.y) + (a.z !== b.z);
+            if (j > i && differ === 1) {
+              viewer.addCylinder({ start: a, end: b, radius: 0.09, color: boxColor, fromCap: 2, toCap: 2 });
+            }
+          });
         });
         BLOCK_CENTERS.forEach(function (c) {
           viewer.addBox({

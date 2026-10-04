@@ -1,0 +1,28 @@
+MiSans by Xiaomi Inc. / 小米科技有限责任公司
+Copyright © 2020-2025 Beijing Xiaomi Mobile Software Co.,Ltd. All Rights Reserved.
+
+Used for the body text of this page under the MiSans Font Intellectual
+Property License Agreement (MiSans字体知识产权许可协议), included here as
+MiSans-license.pdf. The fonts are not covered by any licence of this
+repository; they remain under Xiaomi's agreement.
+
+Source
+  Official download: https://hyperos.mi.com/font/download
+  Archive:           https://hyperos.mi.com/font-download/MiSans.zip
+  Licence:           https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf
+  Files used:        ttf/MiSans-Regular.ttf, ttf/MiSans-Semibold.ttf
+
+What was done
+  Each file was reduced to the characters this page needs and saved as
+  WOFF2 for the web (fontTools subset). Glyph outlines, metrics, layout
+  features and naming records, including the copyright notice above, are
+  unchanged; no glyph was added or altered.
+
+  Characters kept: U+0020-007E, U+00A0-00FF, U+0100-017F, U+2000-206F,
+  U+2070-209F, U+20AC, U+2122, U+2190-21FF, U+2212, and 张 (U+5F20),
+  杨 (U+6768).
+
+Attribution
+  As the licence requires, the use of MiSans is stated in this notice,
+  which is published with the site, and where the font is declared:
+  the <head> of index.html and the @font-face rules in index.css.

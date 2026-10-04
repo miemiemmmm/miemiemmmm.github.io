@@ -17,6 +17,14 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ecebe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#11181b" media="(prefers-color-scheme: dark)">
+  <!-- All fonts are served from this site; no font request goes to a third party. -->
+  <link rel="preload" href="fonts/Archivo/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Body text is set in MiSans by Xiaomi, served from this site under Xiaomi's
+       MiSans font licence: fonts/MiSans/NOTICE.txt, fonts/MiSans/MiSans-license.pdf -->
+  <link rel="preload" href="fonts/MiSans/MiSans-Regular-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="index.css">
 
   <script type="application/ld+json">
@@ -53,7 +61,25 @@
   }
   </script>
 
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    // Apply a remembered theme before first paint, so there is no flash.
+    try {
+      var stored = localStorage.getItem("theme");
+      if (stored === "light" || stored === "dark") document.documentElement.dataset.theme = stored;
+    } catch (e) {}
+    // Decide on the welcome sequence now, so the page is covered from the
+    // first frame instead of flashing before index.js builds the overlay.
+    // "?intro" in the address forces it, for previewing.
+    try {
+      var forceIntro = new URLSearchParams(location.search).has("intro");
+      if (forceIntro || (sessionStorage.getItem("intro-seen") !== "1" && !location.hash &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches &&
+          document.visibilityState !== "hidden")) {
+        document.documentElement.classList.add("intro-pending");
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -61,27 +87,37 @@
   <div class="wrap">
     <a class="brand" href="#top">🐑 <span class="brand-full">Yang Zhang</span></a>
     <ul>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#structure">Binding pocket</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#software">Software</a></li>
-      <li><a href="#background">Background</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#research"><span class="nav-en">Research</span></a></li>
+      <li><a href="#structure"><span class="nav-en">Binding pocket</span></a></li>
+      <li><a href="#publications"><span class="nav-en">Publications</span></a></li>
+      <li><a href="#software"><span class="nav-en">Software</span></a></li>
+      <li><a href="#background"><span class="nav-en">Background</span></a></li>
+      <li><a href="#contact"><span class="nav-en">Contact</span></a></li>
     </ul>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme" hidden></button>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <img class="hero-bg" src="figures/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="hero-bg" src="figures/BG_IMAGE.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <div class="wrap">
+    <div class="hero-head">
+      <div class="hero-id">
+        <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
+        <h1>Yang Zhang <span class="cn" lang="zh-Hans">张杨</span></h1>
+        <p class="hero-sub">Molecular dynamics <b>× machine learning</b></p>
+      </div>
+      <div class="hero-portrait ticks">
+        <img src="figures/biochemgroup_zuerich_2022_yang.jpeg" alt="Portrait of Yang Zhang" width="176" height="220">
+      </div>
+    </div>
     <div class="hero-text">
-      <p class="eyebrow">KTH &amp; SciLifeLab · Stockholm</p>
-      <h1>Yang Zhang<span class="cn">张杨</span></h1>
-      <p class="role">
-        Postdoctoral researcher &amp; GROMACS core developer at KTH Royal Institute of Technology &amp; SciLifeLab.
-      </p>
+      <dl class="sheet">
+        <div><dt>Position</dt><dd>Postdoctoral researcher &amp; GROMACS core developer</dd></div>
+        <div><dt>Affiliation</dt><dd>KTH Royal Institute of Technology &amp; SciLifeLab</dd></div>
+      </dl>
       <p class="lede">
-        I focus on integration of molecular dynamics simulation techiniques with machine learning for drug discovery. 
+        I focus on integration of molecular dynamics simulation techniques with machine learning for drug discovery. 
         My work builds the computational machinery that makes  data reusable; 
         develops algorithms to extract dynamic features;
         and develops drug discovery platforms for computer-aided drug design.
@@ -95,8 +131,6 @@
         <a class="btn" href="CV/Yang_CV_2023.pdf">CV (PDF)</a>
       </div>
     </div>
-    <img class="hero-portrait" src="figures/biochemgroup_zuerich_2022_yang.jpeg"
-         alt="Portrait of Yang Zhang" width="176" height="220">
   </div>
 </header>
 
@@ -118,6 +152,7 @@
             <span class="field-title">Trajectory file format &amp; metadata schema</span>
             <span class="field-teaser">Let trajectory files describe themselves!</span>
           </span>
+          <span class="field-ref">H5MD · GROMACS</span>
         </summary>
         <div class="field-body">
           <p>
@@ -140,6 +175,7 @@
             <span class="field-title">FAIR simulation data</span>
             <span class="field-teaser">Simulation metadata should outlive the trajectories!</span>
           </span>
+          <span class="field-ref">MDDB · MOLSIM · JCIM 2025</span>
         </summary>
         <div class="field-body">
           <p>
@@ -164,6 +200,7 @@
             <span class="field-teaser">To move, or not to move, that is the question!</span>
             <!-- Featurising an ensemble of trajectories, not a single frozen pose. -->
           </span>
+          <span class="field-ref">Nearl · Bioinformatics 2025</span>
         </summary>
         <div class="field-body">
           <p>
@@ -195,6 +232,7 @@
             <span class="field-title">Drug discovery platform</span>
             <span class="field-teaser">Browser Is All You Need!</span>
           </span>
+          <span class="field-ref">ACGui</span>
         </summary>
         <div class="field-body">
           <p>
@@ -222,6 +260,7 @@
             <span class="field-teaser">Topology helped you a lot!</span>
             <!-- How well do ML models recognise a constantly moving molecule? -->
           </span>
+          <span class="field-ref">FEater · Patterns 2025</span>
         </summary>
         <div class="field-body">
           <p>
@@ -271,14 +310,22 @@
     </p>
 
     <div class="viewer-shell">
-      <div id="viewer" data-structure="data/C209CsDJQucZ_Protein2.pdb">
-        <p class="viewer-fallback" id="viewer-fallback">Loading structure…</p>
+      <div class="viewer-stage ticks">
+        <div id="viewer" data-structure="data/C209CsDJQucZ_Protein2.pdb">
+          <p class="viewer-fallback" id="viewer-fallback">Loading structure…</p>
+        </div>
+        <div class="viewer-hud" aria-hidden="true">
+          <span class="hud-tl">Example pocket</span>
+          <span class="hud-tr">8 molecule blocks</span>
+          <span class="hud-bl">Drag ↔ rotate</span>
+          <span class="hud-br">Ctrl + scroll ↕ zoom</span>
+        </div>
       </div>
       <div class="viewer-legend">
-        <span><i class="swatch" style="background:#9aa3a0"></i> protein</span>
-        <span><i class="swatch" style="background:#3fa37f"></i> ligand &amp; pocket residues</span>
-        <span><i class="swatch" style="background:#adf7d1"></i> bounding box</span>
-        <span><i class="swatch" style="background:#8971d0"></i> molecule blocks</span>
+        <span><i class="swatch sw-protein"></i> protein</span>
+        <span><i class="swatch sw-ligand"></i> ligand &amp; pocket residues</span>
+        <span><i class="swatch sw-box"></i> bounding box</span>
+        <span><i class="swatch sw-block"></i> molecule blocks</span>
       </div>
     </div>
   </div>
@@ -344,47 +391,47 @@
 
     <div class="repo-grid">
       <a class="repo" href="https://gitlab.com/gromacs/gromacs">
-        <h3>GROMACS</h3>
+        <h3><span>GROMACS</span></h3>
         <p>Molecular dynamics engine. I work on trajectory I/O — H5MD support and its metadata — and on the new Python API.</p>
         <span class="repo-meta">C++ / Python · core developer</span>
       </a>
       <a class="repo" href="https://gitlab.com/gromacs/h5md-biophysics">
-        <h3>h5md-biophysics</h3>
+        <h3><span>h5md-biophysics</span></h3>
         <p>Metadata schema extending H5MD: topology, force field and MD parameters, selections and observables in one self-describing HDF5 archive.</p>
         <span class="repo-meta">H5MD · maintainer</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/Nearl">
-        <h3>Nearl</h3>
+        <h3><span>Nearl</span></h3>
         <p>Automated pipeline that extracts dynamic features from large ensembles of MD trajectories.</p>
         <span class="repo-meta">Python / C++ / CUDA · creator</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/FEater">
-        <h3>FEater</h3>
+        <h3><span>FEater</span></h3>
         <p>Molecular fragment dataset for benchmarking the robustness of 3D flexible object recognition.</p>
         <span class="repo-meta">Python · HDF5 · creator</span>
       </a>
       <a class="repo" href="https://acgui.bioc.uzh.ch/acgui/">
-        <h3>ACGui</h3>
+        <h3><span>ACGui</span></h3>
         <p>Browser-based drug discovery platform: set up, run, store and analyse simulations from one interface.</p>
         <span class="repo-meta">web platform · co-developer</span>
       </a>
       <a class="repo" href="https://gitlab.com/CaflischLab/paraLig">
-        <h3>ParaLig</h3>
+        <h3><span>ParaLig</span></h3>
         <p>Parallelised preparation and curation of large compound libraries for virtual screening.</p>
         <span class="repo-meta">Python · co-developer</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/Bena">
-        <h3>Bena</h3>
+        <h3><span>Bena</span></h3>
         <p>Deploy benchmarking campaigns on HPC clusters without hand-rolling job scripts.</p>
         <span class="repo-meta">benchmark · creator</span>
       </a>
       <a class="repo" href="https://github.com/miemiemmmm/Kjera">
-        <h3>Kjera</h3>
+        <h3><span>Kjera</span></h3>
         <p>Reveal.js template for interactive scientific slides with embedded 3D molecular views.</p>
         <span class="repo-meta">presentations · creator</span>
       </a>
       <a class="repo" href="https://github.com/CPCLab/molsim-ontology">
-        <h3>MOLSIM</h3>
+        <h3><span>MOLSIM</span></h3>
         <p>Interoperable ontology for representing biomolecular simulation, co-developed with the MD data community.</p>
         <span class="repo-meta">ontology </span>
       </a>
@@ -469,10 +516,10 @@
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Yang Zhang</span>
+    <span class="clock" aria-hidden="true" hidden>Stockholm <span class="sep">/</span> <span class="clock-time">--:--:--</span> <span class="clock-tz"></span></span>
   </div>
 </footer>
 
-<script src="https://3Dmol.org/build/3Dmol-min.js" defer></script>
 <script src="index.js" defer></script>
 </body>
 </html>

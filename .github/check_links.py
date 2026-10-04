@@ -35,6 +35,10 @@ class LinkCollector(HTMLParser):
         attrs = dict(attrs)
         if "id" in attrs:
             self.ids.add(attrs["id"])
+        # Resource hints name an origin to warm up, not a page to fetch.
+        rel = set((attrs.get("rel") or "").lower().split())
+        if tag == "link" and rel & {"preconnect", "dns-prefetch"}:
+            return
         for key in ("href", "src"):
             if attrs.get(key):
                 self.links.append((attrs[key], tag))

@@ -1,0 +1,12 @@
+Archivo by Omnibus-Type
+Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+
+Licensed under the SIL Open Font License, Version 1.1 (OFL.txt in this
+folder). No Reserved Font Name is declared.
+
+Used for headings, labels and navigation. The two files are the variable
+web subsets that Google Fonts serves for Archivo (weight 100-900, width
+62-125 percent), unchanged, so that no font request leaves this site.
+
+  Archivo-latin.woff2      https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2
+  Archivo-latin-ext.woff2  https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdfoLnnA.woff2
